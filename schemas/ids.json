@@ -1,0 +1,334 @@
+{
+  "biodata.accession-base/2": {
+    "type": "AccessionBase",
+    "schema_name": "AccessionBase"
+  },
+  "biodata.accession/3": {
+    "type": "Accession",
+    "schema_name": "Accession"
+  },
+  "biodata.allele/3": {
+    "type": "Allele",
+    "schema_name": "Allele"
+  },
+  "biodata.authorization-date/3": {
+    "type": "AuthorizationDate",
+    "schema_name": "AuthorizationDate"
+  },
+  "biodata.authorization-event/4": {
+    "type": "AuthorizationEvent",
+    "schema_name": "AuthorizationEvent"
+  },
+  "biodata.base/1": {
+    "type": "Base",
+    "schema_name": "Base"
+  },
+  "biodata.build/2": {
+    "type": "Build",
+    "schema_name": "Build"
+  },
+  "biodata.ca-id/2": {
+    "type": "CaId",
+    "schema_name": "CaId"
+  },
+  "biodata.chromosome/1": {
+    "type": "Chromosome",
+    "schema_name": "Chromosome"
+  },
+  "biodata.clinvar-allele-id/2": {
+    "type": "ClinVarAlleleId",
+    "schema_name": "ClinVarAlleleId"
+  },
+  "biodata.clinvar-variation-id/2": {
+    "type": "ClinVarVariationId",
+    "schema_name": "ClinVarVariationId"
+  },
+  "biodata.coding-change/1": {
+    "type": "CodingChange",
+    "schema_name": "CodingChange"
+  },
+  "biodata.contig/1": {
+    "type": "Contig",
+    "schema_name": "Contig"
+  },
+  "biodata.cosmic-id/1": {
+    "type": "CosmicId",
+    "schema_name": "CosmicId"
+  },
+  "biodata.cytoband/1": {
+    "type": "Cytoband",
+    "schema_name": "Cytoband"
+  },
+  "biodata.device-recall-number/1": {
+    "type": "DeviceRecallNumber",
+    "schema_name": "DeviceRecallNumber"
+  },
+  "biodata.disease-association/7": {
+    "type": "DiseaseAssociation",
+    "schema_name": "DiseaseAssociation"
+  },
+  "biodata.disease-endpoint/3": {
+    "type": "DiseaseEndpoint",
+    "schema_name": "DiseaseEndpoint"
+  },
+  "biodata.disease-relation/4": {
+    "type": "DiseaseRelation",
+    "schema_name": "DiseaseRelation"
+  },
+  "biodata.disease-statistic/4": {
+    "type": "DiseaseStatistic",
+    "schema_name": "DiseaseStatistic"
+  },
+  "biodata.disease-synonym/3": {
+    "type": "DiseaseSynonym",
+    "schema_name": "DiseaseSynonym"
+  },
+  "biodata.doi/2": {
+    "type": "Doi",
+    "schema_name": "Doi"
+  },
+  "biodata.drug-disease-reference/3": {
+    "type": "DrugDiseaseReference",
+    "schema_name": "DrugDiseaseReference"
+  },
+  "biodata.drug-id/2": {
+    "type": "DrugId",
+    "schema_name": "DrugId"
+  },
+  "biodata.drug-identity-level/1": {
+    "type": "DrugIdentityLevel",
+    "schema_name": "DrugIdentityLevel"
+  },
+  "biodata.drug-identity-relation/5": {
+    "type": "DrugIdentityRelation",
+    "schema_name": "DrugIdentityRelation"
+  },
+  "biodata.drug-identity/4": {
+    "type": "DrugIdentity",
+    "schema_name": "DrugIdentity"
+  },
+  "biodata.drug-indication-claim/7": {
+    "type": "DrugIndicationClaim",
+    "schema_name": "DrugIndicationClaim"
+  },
+  "biodata.drug-interaction-claim/7": {
+    "type": "DrugInteractionClaim",
+    "schema_name": "DrugInteractionClaim"
+  },
+  "biodata.drug-label-reference/4": {
+    "type": "DrugLabelReference",
+    "schema_name": "DrugLabelReference"
+  },
+  "biodata.drug-label-section/4": {
+    "type": "DrugLabelSection",
+    "schema_name": "DrugLabelSection"
+  },
+  "biodata.drug-native-reference/2": {
+    "type": "DrugNativeReference",
+    "schema_name": "DrugNativeReference"
+  },
+  "biodata.drug-native-target/3": {
+    "type": "DrugNativeTarget",
+    "schema_name": "DrugNativeTarget"
+  },
+  "biodata.drug-product/5": {
+    "type": "DrugProduct",
+    "schema_name": "DrugProduct"
+  },
+  "biodata.drug-recall-number/1": {
+    "type": "DrugRecallNumber",
+    "schema_name": "DrugRecallNumber"
+  },
+  "biodata.drug-stage/1": {
+    "type": "DrugStage",
+    "schema_name": "DrugStage"
+  },
+  "biodata.drug-target-relation/7": {
+    "type": "DrugTargetRelation",
+    "schema_name": "DrugTargetRelation"
+  },
+  "biodata.ensembl-gene-id/2": {
+    "type": "EnsemblGeneId",
+    "schema_name": "EnsemblGeneId"
+  },
+  "biodata.europepmc-id/2": {
+    "type": "EuropePmcId",
+    "schema_name": "EuropePmcId"
+  },
+  "biodata.expression-syntax/1": {
+    "type": "ExpressionSyntax",
+    "schema_name": "ExpressionSyntax"
+  },
+  "biodata.expression/3": {
+    "type": "Expression",
+    "schema_name": "Expression"
+  },
+  "biodata.gene-location/1": {
+    "type": "GeneLocation",
+    "schema_name": "GeneLocation"
+  },
+  "biodata.gene-ref/3": {
+    "type": "SourceGeneRef",
+    "schema_name": "GeneRef"
+  },
+  "biodata.gene-status/1": {
+    "type": "GeneStatus",
+    "schema_name": "GeneStatus"
+  },
+  "biodata.gene-summary/3": {
+    "type": "Summary",
+    "schema_name": "Summary"
+  },
+  "biodata.gene-symbol/2": {
+    "type": "GeneSymbol",
+    "schema_name": "GeneSymbol"
+  },
+  "biodata.gene/7": {
+    "type": "Gene",
+    "schema_name": "Gene"
+  },
+  "biodata.genomic-interval/2": {
+    "type": "GenomicInterval",
+    "schema_name": "GenomicInterval"
+  },
+  "biodata.hgnc-id/2": {
+    "type": "HgncId",
+    "schema_name": "HgncId"
+  },
+  "biodata.hgnc-status/2": {
+    "type": "HgncStatus",
+    "schema_name": "HgncStatus"
+  },
+  "biodata.hgvs-text/4": {
+    "type": "HgvsText",
+    "schema_name": "HgvsText"
+  },
+  "biodata.locus-group/1": {
+    "type": "LocusGroup",
+    "schema_name": "LocusGroup"
+  },
+  "biodata.locus-type/1": {
+    "type": "LocusType",
+    "schema_name": "LocusType"
+  },
+  "biodata.mane/1": {
+    "type": "Mane",
+    "schema_name": "Mane"
+  },
+  "biodata.markdown/2": {
+    "type": "Markdown",
+    "schema_name": "Markdown"
+  },
+  "biodata.match-kind/1": {
+    "type": "MatchKind",
+    "schema_name": "MatchKind"
+  },
+  "biodata.mondo-id/1": {
+    "type": "MondoId",
+    "schema_name": "MondoId"
+  },
+  "biodata.ncbi-gene-id/2": {
+    "type": "NcbiGeneId",
+    "schema_name": "NcbiGeneId"
+  },
+  "biodata.ncit-id/1": {
+    "type": "NcitId",
+    "schema_name": "NcitId"
+  },
+  "biodata.nct-id/1": {
+    "type": "NctId",
+    "schema_name": "NctId"
+  },
+  "biodata.omim-id/1": {
+    "type": "OmimId",
+    "schema_name": "OmimId"
+  },
+  "biodata.pa-id/2": {
+    "type": "PaId",
+    "schema_name": "PaId"
+  },
+  "biodata.partial-date/2": {
+    "type": "PartialDate",
+    "schema_name": "PartialDate"
+  },
+  "biodata.pmcid/2": {
+    "type": "Pmcid",
+    "schema_name": "Pmcid"
+  },
+  "biodata.pmid/2": {
+    "type": "Pmid",
+    "schema_name": "Pmid"
+  },
+  "biodata.population-frequency/8": {
+    "type": "PopulationFrequency",
+    "schema_name": "PopulationFrequency"
+  },
+  "biodata.position1/1": {
+    "type": "Position1",
+    "schema_name": "Position1"
+  },
+  "biodata.rcv-id/2": {
+    "type": "RcvId",
+    "schema_name": "RcvId"
+  },
+  "biodata.representation/5": {
+    "type": "Representation",
+    "schema_name": "Representation"
+  },
+  "biodata.rs-id/2": {
+    "type": "RsId",
+    "schema_name": "RsId"
+  },
+  "biodata.scv-id/2": {
+    "type": "ScvId",
+    "schema_name": "ScvId"
+  },
+  "biodata.sequence-location/3": {
+    "type": "SequenceLocation",
+    "schema_name": "SequenceLocation"
+  },
+  "biodata.sequence/1": {
+    "type": "Sequence",
+    "schema_name": "Sequence"
+  },
+  "biodata.span0/1": {
+    "type": "Span0",
+    "schema_name": "Span0"
+  },
+  "biodata.statement/7": {
+    "type": "Statement",
+    "schema_name": "Statement"
+  },
+  "biodata.strand/1": {
+    "type": "Strand",
+    "schema_name": "Strand"
+  },
+  "biodata.summary-source/1": {
+    "type": "SummarySource",
+    "schema_name": "SummarySource"
+  },
+  "biodata.text/2": {
+    "type": "Text",
+    "schema_name": "Text"
+  },
+  "biodata.uniprot-acc/1": {
+    "type": "UniProtAcc",
+    "schema_name": "UniProtAcc"
+  },
+  "biodata.variant-id/3": {
+    "type": "VariantId",
+    "schema_name": "VariantId"
+  },
+  "biodata.variant/7": {
+    "type": "Variant",
+    "schema_name": "Variant"
+  },
+  "biodata.vcv-id/2": {
+    "type": "VcvId",
+    "schema_name": "VcvId"
+  },
+  "biodata.vrs-id/1": {
+    "type": "VrsId",
+    "schema_name": "VrsId"
+  }
+}

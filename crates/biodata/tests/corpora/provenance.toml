@@ -1,0 +1,6 @@
+license = "Apache-2.0"
+origin = "Reviewed parser differences derived from the Apache-2.0 and CC0 corpora in this folder; their source notices are retained."
+
+[[file]]
+path = "reviewed-differences.tsv"
+sha256 = "624914fa408a85eb245b8b857cfe4f0d3add31e55351cca6218d88d4802aef46"

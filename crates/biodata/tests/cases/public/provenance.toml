@@ -1,0 +1,46 @@
+license = "MIT"
+origin = "Written by hand for this project; no external source."
+
+[[file]]
+path = "alteration-coding.jsonl"
+sha256 = "5b9c22da173b0963d3fb0c7f8d32a1544b6d3be7c4ba9fb57572c308da9deeeb"
+
+[[file]]
+path = "alteration-deferred.jsonl"
+sha256 = "35eeea763b8f70647a9b7c5d75e450a7fe6bbfe35d077a37d6ea815816fa9724"
+
+[[file]]
+path = "alteration-event.jsonl"
+sha256 = "69996d657b3569b500d9504ba7aa9001f2d035c45d1b806b21c213a8324e9d79"
+
+[[file]]
+path = "alteration-marker.jsonl"
+sha256 = "51c2530103c5c02a11d2a07a9a21911ce3bcb899662122c098e9d95b33a703ee"
+
+[[file]]
+path = "alteration-pharmacogenomic.jsonl"
+sha256 = "87adb88ca67640a7c4c6a93bd4ce995d52063a89aad98bf1585d13d025bb78b4"
+
+[[file]]
+path = "alteration-protein.jsonl"
+sha256 = "4d9851e543f45a90c458828af0742adad84c95597d7f1c59f8f185f83b963921"
+
+[[file]]
+path = "alteration-review-regressions.jsonl"
+sha256 = "e30476f9d5be5027083115dd0b35732ef25485ead05907e7e2ac917587a3d4db"
+
+[[file]]
+path = "hgvs-nucleotide.jsonl"
+sha256 = "951cb126355c1cd4947ee517ae02dfdfa90bfcc85a6e2f52a6de1907cc5530b1"
+
+[[file]]
+path = "hgvs-protein.jsonl"
+sha256 = "f7d46d3d7d1536e51642b2f43dbedbb1392f627fd02a64f7a4601207999486d5"
+
+[[file]]
+path = "hgvs-reference.jsonl"
+sha256 = "3d845207d9e6e0035a0e4e8478f4bef07338cc802366c2bfb68e4b39ab04fab4"
+
+[[file]]
+path = "hgvs-review-regressions.jsonl"
+sha256 = "287fdee250d713b28bd39222de33816557b93ba77d5c6c6a87fd1b86acc206ec"

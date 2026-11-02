@@ -1,0 +1,222 @@
+[
+  {
+    "name": "joint-empty-profile-control",
+    "kind": "joint_profile",
+    "source": "synthetic value contract",
+    "sources": [
+      "https://docs.civicdb.org/en/latest/model/molecular_profiles.html"
+    ],
+    "note": "A source profile can be referenced by its own record and label before component variants are present in this local view.",
+    "value": {
+      "level": "profile",
+      "record": "control-profile-1",
+      "label": "source profile"
+    }
+  },
+  {
+    "name": "joint-transcript-consequence-control",
+    "kind": "joint_transcript_consequence",
+    "source": "synthetic value contract",
+    "sources": [
+      "https://static.ensembl.org/info/genome/variation/prediction/predicted_data.html",
+      "https://github.com/The-Sequence-Ontology/SO-Ontologies/blob/master/Ontology_Files/so.obo"
+    ],
+    "value": {
+      "transcript": "NM_000001.1",
+      "gene": {
+        "label": "GENE"
+      },
+      "consequences": [
+        {
+          "system": "so",
+          "code": "SO:0001583"
+        },
+        {
+          "system": "so",
+          "code": "SO:0001630"
+        }
+      ],
+      "coding_hgvs": "NM_000001.1:c.1A>T",
+      "protein_hgvs": "NP_000001.1:p.Met1Leu",
+      "region": {
+        "kind": "exon",
+        "number": 1,
+        "total": 3
+      },
+      "attribution": {
+        "source": "synthetic source",
+        "record": "control-1"
+      }
+    }
+  },
+  {
+    "name": "joint-copy-count-control",
+    "kind": "joint_copy_count",
+    "source": "synthetic value contract",
+    "sources": [
+      "https://vrs.ga4gh.org/en/2.1/model/SystemicVariation/CopyNumberCount.html",
+      "https://vrs.ga4gh.org/en/latest/model/LocationAndReference/SequenceLocation.html"
+    ],
+    "value": {
+      "location": {
+        "sequence": "NC_000007.14",
+        "span": {
+          "start": {
+            "min": 100,
+            "max": 102
+          },
+          "end": {
+            "min": 110
+          }
+        }
+      },
+      "copies": {
+        "min": 3,
+        "max": 5
+      }
+    }
+  },
+  {
+    "name": "joint-copy-change-control",
+    "kind": "joint_copy_change",
+    "source": "synthetic value contract",
+    "sources": [
+      "https://vrs.ga4gh.org/en/stable/model/SystemicVariation/CopyNumberChange.html",
+      "https://vrs.ga4gh.org/en/latest/model/LocationAndReference/SequenceLocation.html"
+    ],
+    "value": {
+      "location": {
+        "sequence": "NC_000007.14",
+        "span": {
+          "start": {
+            "min": 100,
+            "max": 102
+          },
+          "end": {
+            "min": 110
+          }
+        }
+      },
+      "copy_change": "gain"
+    }
+  },
+  {
+    "name": "joint-categorical-amplification-control",
+    "kind": "joint_categorical",
+    "source": "synthetic value contract",
+    "sources": [
+      "https://cat-vrs.ga4gh.org/en/1.1.1/concepts/Recipes/CategoricalCnv.html"
+    ],
+    "note": "Local category preserves the source label; it does not assert a copy threshold.",
+    "value": {
+      "level": "categorical",
+      "gene": {
+        "label": "GENE"
+      },
+      "category": "amplification",
+      "label": "GENE Amplification"
+    }
+  },
+  {
+    "name": "joint-categorical-deletion-control",
+    "kind": "joint_categorical",
+    "source": "synthetic value contract",
+    "sources": [
+      "https://cat-vrs.ga4gh.org/en/1.1.1/concepts/Recipes/CategoricalCnv.html"
+    ],
+    "value": {
+      "level": "categorical",
+      "gene": {
+        "label": "GENE"
+      },
+      "category": "deletion",
+      "label": "GENE Deletion"
+    }
+  },
+  {
+    "name": "joint-categorical-fusion-control",
+    "kind": "joint_categorical",
+    "source": "synthetic value contract",
+    "sources": [
+      "https://cat-vrs.ga4gh.org/en/1.1.1/concepts/Recipes/GeneFusion.html"
+    ],
+    "note": "The partner is stated; no 5-prime or 3-prime order is inferred.",
+    "value": {
+      "level": "categorical",
+      "gene": {
+        "label": "GENE1"
+      },
+      "category": "fusion",
+      "partner": {
+        "label": "GENE2"
+      },
+      "label": "GENE1-GENE2 Fusion"
+    }
+  },
+  {
+    "name": "joint-categorical-exon-control",
+    "kind": "joint_categorical",
+    "source": "synthetic value contract",
+    "sources": [
+      "https://cat-vrs.ga4gh.org/en/1.1.1/concepts/Recipes/index.html",
+      "https://github.com/The-Sequence-Ontology/SO-Ontologies/blob/master/Ontology_Files/so.obo"
+    ],
+    "note": "The exon count is synthetic test geometry; no genomic allele is inferred.",
+    "value": {
+      "level": "categorical",
+      "gene": {
+        "label": "GENE"
+      },
+      "category": "exon_mutation",
+      "region": {
+        "kind": "exon",
+        "number": 2,
+        "total": 3
+      },
+      "edit": {
+        "system": "so",
+        "code": "SO:0000159"
+      },
+      "label": "GENE exon 2 deletion"
+    }
+  },
+  {
+    "name": "joint-categorical-oncogenic-control",
+    "kind": "joint_categorical",
+    "source": "synthetic value contract",
+    "sources": [
+      "https://cat-vrs.ga4gh.org/en/1.1.1/concepts/Recipes/index.html"
+    ],
+    "note": "The category is a source label and does not classify a concrete allele.",
+    "value": {
+      "level": "categorical",
+      "gene": {
+        "label": "GENE"
+      },
+      "category": "oncogenic_mutation",
+      "label": "GENE any oncogenic mutation"
+    }
+  },
+  {
+    "name": "joint-categorical-residue-control",
+    "kind": "joint_categorical",
+    "source": "synthetic value contract",
+    "sources": [
+      "https://cat-vrs.ga4gh.org/en/1.1.1/concepts/Recipes/index.html"
+    ],
+    "value": {
+      "level": "categorical",
+      "gene": {
+        "label": "GENE"
+      },
+      "category": "residue",
+      "site": {
+        "gene": {
+          "label": "GENE"
+        },
+        "position": 600
+      },
+      "label": "GENE residue 600"
+    }
+  }
+]

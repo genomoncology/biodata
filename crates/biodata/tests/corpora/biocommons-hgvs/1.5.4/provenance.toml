@@ -1,0 +1,25 @@
+name = "biocommons hgvs test data"
+version = "1.5.4"
+revision = "394e632929479ae4eb8ca26fcedfac0e819c9fc8"
+origin = "https://github.com/biocommons/hgvs/tree/1.5.4/tests/data"
+license = "Apache-2.0"
+license_file = "LICENSE.txt"
+attribution = "HGVS Contributors"
+clinvar_attribution = "NCBI ClinVar"
+clinvar_attribution_policy = "https://www.ncbi.nlm.nih.gov/clinvar/docs/maintenance_use/"
+transformation = "Files copied without modification from the tagged repository."
+
+[[file]]
+path = "grammar_test.tsv"
+source_path = "tests/data/grammar_test.tsv"
+sha256 = "3945ebc4cf372b7312bc36aae3b4b95d575d99631fbf549e91a46614650016b3"
+
+[[file]]
+path = "reject"
+source_path = "tests/data/reject"
+sha256 = "9ffdc4ef5ddc8c172ecee2d1dee1d642aafdda61c47dc1851af10074123e75ed"
+
+[[file]]
+path = "clinvar.gz"
+source_path = "tests/data/clinvar.gz"
+sha256 = "80d64bb5e1f5d999066791fb95a94d2e3ee57e1992bdb53dc8c00d5e86e57d45"

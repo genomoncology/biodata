@@ -1,0 +1,43 @@
+{
+  "targetRef": "main",
+  "mailroom": {
+    "repo": "agents",
+    "name": "biodata"
+  },
+  "flow": "light",
+  "ticketsGate": "make gate",
+  "inertPaths": [
+    "sdlc/plan.md",
+    "sdlc/planning/*.md",
+    "sdlc/tickets/*.md",
+    "sdlc/decisions/*.md",
+    "sdlc/designs/*.md",
+    "sdlc/records/*.md",
+    "sdlc/ideas/*.md"
+  ],
+  "milestones": {
+    "file": "planning/milestones.md"
+  },
+  "releaseMilestones": [
+    {
+      "name": "1",
+      "targetRef": "origin/main",
+      "state": "active"
+    },
+    {
+      "name": "2",
+      "targetRef": "origin/main",
+      "state": "active"
+    },
+    {
+      "name": "3",
+      "targetRef": "origin/main",
+      "state": "active"
+    },
+    {
+      "name": "4",
+      "targetRef": "origin/main",
+      "state": "active"
+    }
+  ]
+}

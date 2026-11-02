@@ -1,0 +1,91 @@
+{"input":"NC_000007.14:g.140753336A>T","outcome":"parsed","value":{"reference":{"accession":"NC_000007.14"},"change":{"nucleotide":{"molecule":"genomic","body":{"edit":{"location":{"point":{"anchor":{"number":140753336}}},"edit":{"substitution":{"from":"A","to":"T"}}}}}}}}
+{"input": "g.140753336A>T", "outcome": "parsed"}
+{"input": "NC_000007.14:g.0140753336N>Y", "outcome": "parsed", "render": "NC_000007.14:g.140753336N>Y"}
+{"input": "g.101R>S", "outcome": "parsed"}
+{"input": "g.102W>K", "outcome": "parsed"}
+{"input": "g.103M>B", "outcome": "parsed"}
+{"input": "g.104D>H", "outcome": "parsed"}
+{"input": "g.105V>A", "outcome": "parsed"}
+{"input": "NC_000007.14:g.140753336A>J", "outcome": "invalid", "code": "hgvs.base.invalid", "span": [26, 27]}
+{"input": "NC_000007.14:g.140753336A>U", "outcome": "invalid", "code": "hgvs.base.invalid", "span": [26, 27]}
+{"input": "NC_000007.14:g.140753336a>t", "outcome": "invalid", "code": "hgvs.base.invalid", "span": [24, 25]}
+{"input": "NC_000007.14:g.BRAFA>T", "outcome": "invalid", "code": "hgvs.position.invalid", "span": [15, 16]}
+{"input": "NC_000007.14:g.4294967296A>T", "outcome": "invalid", "code": "hgvs.position.invalid", "span": [15, 25]}
+{"input": "NC_000007.14:g.0A>T", "outcome": "invalid", "code": "hgvs.position.invalid", "span": [15, 16]}
+{"input": "NC_000007.14:g.140753336A", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [25, 25]}
+{"input": "NC_000007.14:g.140753336del", "outcome": "parsed"}
+{"input": "NM_004333.4:c.1799T>A", "outcome": "parsed"}
+{"input": "ENST00000288602.11:c.1799T>A", "outcome": "parsed"}
+{"input": "LRG_199t1:c.5A>T", "outcome": "parsed"}
+{"input": "c.-14G>C", "outcome": "parsed"}
+{"input": "c.*5del", "outcome": "parsed"}
+{"input": "c.88+1G>T", "outcome": "parsed"}
+{"input": "c.-7+2A>G", "outcome": "parsed"}
+{"input": "c.(?_-1)_(*1_?)del", "outcome": "parsed"}
+{"input": "c.(4071+1_4072-1)_(5145+1_5146-1)del", "outcome": "parsed"}
+{"input": "r.17a>u", "outcome": "parsed"}
+{"input": "r.(?)", "outcome": "parsed"}
+{"input": "g.17_18del", "outcome": "parsed"}
+{"input": "n.23dup", "outcome": "parsed"}
+{"input": "m.24_25insAC", "outcome": "parsed"}
+{"input": "o.32_35delinsT", "outcome": "parsed"}
+{"input": "g.50_54inv", "outcome": "parsed"}
+{"input": "c.17delAG", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [9, 9]}
+{"input": "c.18dupT", "outcome": "parsed"}
+{"input": "c.19=", "outcome": "parsed"}
+{"input": "c.20?", "outcome": "parsed"}
+{"input": "g.?", "outcome": "parsed"}
+{"input": "c.=", "outcome": "parsed"}
+{"input": "r.0", "outcome": "parsed"}
+{"input": "r.spl", "outcome": "parsed"}
+{"input": "c.(42A>G)", "outcome": "parsed"}
+{"input": "c.41+0A>G", "outcome": "invalid", "code": "hgvs.position.invalid", "span": [5, 6]}
+{"input": "c.*0A>G", "outcome": "invalid", "code": "hgvs.position.invalid", "span": [3, 4]}
+{"input": "g.1A>A", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [6, 6]}
+{"input": "[g.1A>T]", "outcome": "unsupported", "code": "hgvs.allele.unsupported", "span": [0, 1]}
+{"input": "g.[1A>T]", "outcome": "unsupported", "code": "hgvs.allele.unsupported", "span": [2, 3]}
+{"input": "g.1A>T/1A>G", "outcome": "unsupported", "code": "hgvs.mosaic.unsupported", "span": [6, 7]}
+{"input": "g.1A>T//1A>G", "outcome": "unsupported", "code": "hgvs.chimeric.unsupported", "span": [6, 8]}
+{"input": "g.1::g.2", "outcome": "unsupported", "code": "hgvs.fusion.unsupported", "span": [3, 5]}
+{"input": "g.1con2_3", "outcome": "unsupported", "code": "hgvs.conversion.unsupported", "span": [3, 6]}
+{"input": "g.1AC[3]", "outcome": "unsupported", "code": "hgvs.repeat.unsupported", "span": [5, 6]}
+{"input": "g.1_2insN[12]", "outcome": "unsupported", "code": "hgvs.inserted_length.unsupported", "span": [9, 10]}
+{"input": "g.1_2ins(10)", "outcome": "unsupported", "code": "hgvs.inserted_length.unsupported", "span": [8, 9]}
+{"input": "g.1_2ins31_32", "outcome": "invalid", "code": "hgvs.base.invalid", "span": [8, 9]}
+{"input": "g.1_2ins[NC_000001.11:g.1_5]", "outcome": "unsupported", "code": "hgvs.inserted_reference.unsupported", "span": [8, 9]}
+{"input": "g.21_23insAC", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [12, 12]}
+{"input": "g.21insAC", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [9, 9]}
+{"input": "g.21A=", "outcome": "parsed", "render": "g.21="}
+{"input": "c.-2_-1insA", "outcome": "parsed"}
+{"input": "c.-1_1insA", "outcome": "parsed"}
+{"input": "c.1+2_1+3insA", "outcome": "parsed"}
+{"input": "g.0", "outcome": "invalid", "code": "hgvs.position.invalid", "span": [2, 3]}
+{"input": "c.spl", "outcome": "invalid", "code": "hgvs.position.invalid", "span": [2, 3]}
+{"input": "g.((43_45)del)", "outcome": "parsed"}
+{"input": "c.((43_45)_(51_53)delinsA)", "outcome": "parsed"}
+{"input": "c.((43_45)_51del)", "outcome": "parsed"}
+{"input": "r.5_6insacgunryswkmbdhv", "outcome": "parsed"}
+{"input": "r.7c>g", "outcome": "parsed"}
+{"input": "c.7+1_8-1insA", "outcome": "parsed"}
+{"input": "c.?_7insA", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [9, 9]}
+{"input": "c.7_*1insA", "outcome": "parsed"}
+{"input": "c.(7_9)insA", "outcome": "parsed"}
+{"input": "r.7A>u", "outcome": "invalid", "code": "hgvs.base.invalid", "span": [3, 4]}
+{"input": "r.7a>t", "outcome": "invalid", "code": "hgvs.base.invalid", "span": [5, 6]}
+{"input": "r.7a>x", "outcome": "invalid", "code": "hgvs.base.invalid", "span": [5, 6]}
+{"input":"c.*1_7insA","outcome":"invalid","code":"hgvs.position.invalid","span":[6,7]}
+{"input": "r.0?", "outcome": "unsupported", "code": "hgvs.rna_outcome.unsupported", "span": [2, 4]}
+{"input": "g.7A>T(;)9del", "outcome": "unsupported", "code": "hgvs.allele.unsupported", "span": [6, 9]}
+{"input": "g.pter_10del::20_qterdel", "outcome": "unsupported", "code": "hgvs.fusion.unsupported", "span": [12, 14]}
+{"input": "n.*7A>T", "outcome": "invalid", "code": "hgvs.position.invalid", "span": [2, 3]}
+{"input": "g.*7A>T", "outcome": "invalid", "code": "hgvs.position.invalid", "span": [2, 3]}
+{"input": "g.7+1A>T", "outcome": "invalid", "code": "hgvs.position.invalid", "span": [3, 4]}
+{"input": "g.??", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [4, 4]}
+{"input": "g.((7A>T))", "outcome": "invalid", "code": "hgvs.position.invalid", "span": [5, 6]}
+{"input": "g.7inv", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [6, 6]}
+{"input":"g.7_7inv","outcome":"invalid","code":"hgvs.position.invalid","span":[5,6]}
+{"input": "c.(7_9)_(11_13)insA", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [19, 19]}
+{"input": "c.(?_9)insA", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [11, 11]}
+{"input": "r.17+1?", "outcome": "parsed"}
+{"input":"g.(7_7)inv","outcome":"invalid","code":"hgvs.position.invalid","span":[2,3]}
+{"input": "g.(7_9)inv", "outcome": "parsed"}

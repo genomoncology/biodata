@@ -1,0 +1,74 @@
+{"input": "ER Overexpression", "outcome": "parsed"}
+{"input": "MTAP No Expression", "outcome": "parsed"}
+{"input": "HER2 Positive", "outcome": "parsed"}
+{"input": "HER2 Negative", "outcome": "parsed"}
+{"input": "HER2 Equivocal", "outcome": "parsed"}
+{"input": "HER2 Expression (IHC = 3+)", "outcome": "parsed"}
+{"input":"HER2 Expression (IHC >= 2+)","outcome":"parsed","value":{"kind":{"gene":{"subject":"HER2","change":{"expression":{"state":"expression","score":{"system":"ihc","bound":{"ihc_grade":["greater_or_equal",{"digits":2,"scale":0}]}}}}}}}}
+{"input": "HER2 Expression (IHC 1+)", "outcome": "parsed"}
+{"input": "HER2 Expression (IHC = 0.5+)", "outcome": "parsed"}
+{"input": "AR V21 Splice Variant", "outcome": "parsed"}
+{"input": "AR V255 Splice Variant", "outcome": "parsed"}
+{"input": "PD-L1 Expression (TPS <= 50%)", "outcome": "parsed"}
+{"input": "PD-L1 Expression (TPS > 1%)", "outcome": "parsed"}
+{"input":"PD-L1 Expression (TPS = 1-49.999%)","outcome":"parsed","value":{"kind":{"gene":{"subject":"PD-L1","change":{"expression":{"state":"expression","score":{"system":"tps","bound":{"between":[{"digits":1,"scale":0},{"digits":49999,"scale":3}]},"percent":true}}}}}}}
+{"input": "PD-L1 Expression (CPS >= 0.00000000000000000001)", "outcome": "parsed"}
+{"input": "PD-L1 Expression (CPS = 18446744073709551615)", "outcome": "parsed"}
+{"input":"PD-L1 Expression (CPS = 0.00000000000000000001-1)","outcome":"parsed"}
+{"input":"PD-L1 Expression (CPS = 1-0.00000000000000000001)","outcome":"invalid","code":"alteration.score.invalid","span":[48,49]}
+{"input":"PD-L1 Expression (CPS = 1.8446744073709551615-18446744073709551615)","outcome":"parsed"}
+{"input":"PD-L1 Expression (CPS = 18446744073709551615-1.8446744073709551615)","outcome":"invalid","code":"alteration.score.invalid","span":[66,67]}
+{"input": "PD-L1 Expression (TPS \u2265 50%)", "outcome": "parsed", "render": "PD-L1 Expression (TPS >= 50%)"}
+{"input": "PD-L1 Expression (TPS \u2264 50%)", "outcome": "parsed", "render": "PD-L1 Expression (TPS <= 50%)"}
+{"input": "PD-L1 Expression (TPS = 01.5000%)", "outcome": "parsed", "render": "PD-L1 Expression (TPS = 1.5%)"}
+{"input": "PD-L1 Expression (CPS = 0.0)", "outcome": "parsed", "render": "PD-L1 Expression (CPS = 0)"}
+{"input": "AR V007 Splice Variant", "outcome": "parsed", "render": "AR V7 Splice Variant"}
+{"input": "MSI_High", "outcome": "parsed", "render": "MSI-High"}
+{"input": "msi-high", "outcome": "parsed", "render": "MSI-High"}
+{"input": "msi-low", "outcome": "parsed", "render": "MSI-Low"}
+{"input": "microsatellite stable (mss)", "outcome": "parsed", "render": "Microsatellite Stable (MSS)"}
+{"input": "tmb-high", "outcome": "parsed", "render": "TMB-High"}
+{"input": "tmb-intermediate", "outcome": "parsed", "render": "TMB-Intermediate"}
+{"input": "tmb-low", "outcome": "parsed", "render": "TMB-Low"}
+{"input": "polygenic risk - high", "outcome": "parsed", "render": "Polygenic Risk - High"}
+{"input": "polygenic risk - medium", "outcome": "parsed", "render": "Polygenic Risk - Medium"}
+{"input": "polygenic risk - low", "outcome": "parsed", "render": "Polygenic Risk - Low"}
+{"input": "deficient dna mismatch repair (dmmr)", "outcome": "parsed", "render": "Deficient DNA Mismatch Repair (dMMR)"}
+{"input": "proficient dna mismatch repair (pmmr)", "outcome": "parsed", "render": "Proficient DNA Mismatch Repair (pMMR)"}
+{"input": "hrd positive", "outcome": "parsed", "render": "HRD Positive"}
+{"input": "hrd negative", "outcome": "parsed", "render": "HRD Negative"}
+{"input": "genomic loh positive", "outcome": "parsed", "render": "Genomic LOH Positive"}
+{"input": "genomic loh negative", "outcome": "parsed", "render": "Genomic LOH Negative"}
+{"input": "ctdna positive", "outcome": "parsed", "render": "ctDNA Positive"}
+{"input": "ctdna negative", "outcome": "parsed", "render": "ctDNA Negative"}
+{"input": "ER Expression (JUNK < 45%)", "outcome": "unsupported", "code": "alteration.scoring_system.unsupported", "span": [15, 19]}
+{"input": "PD-L1 Expression (TPS > 1-5%)", "outcome": "invalid", "code": "alteration.score.invalid", "span": [27, 28]}
+{"input": "HER2 Expression (IHC = 1-2)", "outcome": "invalid", "code": "alteration.score.invalid", "span": [24, 25]}
+{"input": "AR VII Splice Variant", "outcome": "unsupported", "code": "alteration.splice.unsupported", "span": [3, 6]}
+{"input": "AR Splice Variant", "outcome": "unsupported", "code": "alteration.splice.unsupported", "span": [3, 17]}
+{"input": "AR V0 Splice Variant", "outcome": "invalid", "code": "alteration.marker.invalid", "span": [20, 20]}
+{"input": "AR V256 Splice Variant", "outcome": "invalid", "code": "alteration.marker.invalid", "span": [4, 7]}
+{"input": "MGMT Promoter Methylation", "outcome": "invalid", "code": "alteration.marker.invalid", "span": [25, 25]}
+{"input": "PD-L1 Expression (TPS = 5-1%)", "outcome": "invalid", "code": "alteration.score.invalid", "span": [27, 28]}
+{"input": "HER2 Expression (IHC = 4+)", "outcome": "invalid", "code": "alteration.score.invalid", "span": [25, 26]}
+{"input": "HER2 Expression (IHC = 2)", "outcome": "invalid", "code": "alteration.score.invalid", "span": [24, 25]}
+{"input": "HER2 Expression (IHC = 2+%)", "outcome": "invalid", "code": "alteration.score.invalid", "span": [26, 27]}
+{"input": "PD-L1 Expression (TPS = 1%-5%)", "outcome": "invalid", "code": "alteration.score.invalid", "span": [26, 27]}
+{"input": "PD-L1 Expression (TPS = 18446744073709551616%)", "outcome": "invalid", "code": "alteration.score.invalid", "span": [24, 25]}
+{"input": "PD-L1 Expression (TPS 5%)", "outcome": "invalid", "code": "alteration.score.invalid", "span": [23, 24]}
+{"input": "PD-L1 Expression (TPS = 5.%)", "outcome": "invalid", "code": "alteration.score.invalid", "span": [26, 27]}
+{"input": "PD-L1 Expression (TPS = 0-0.01%)", "outcome": "parsed"}
+{"input": "PD-L1 Expression (TPS = 0.001-0.01%)", "outcome": "parsed"}
+{"input": "PD-L1 Expression (TPS = 1.01-1.1%)", "outcome": "parsed"}
+{"input":"PD-L1 Expression (TPS = 1-1%)","outcome":"invalid","code":"alteration.score.invalid","span":[27,28]}
+{"input": "HER2 Expression (IHC <= 0.5+)", "outcome": "parsed"}
+{"input": "HER2 Expression (IHC > 0)", "outcome": "parsed"}
+{"input": "MGMT Promoter Methylation Negative (somatic)", "outcome": "parsed"}
+{"input": "PD-L1 Expression (TPS = 0.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001%)", "outcome": "parsed"}
+{"input": "PD-L1 Expression (TPS = 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001%)", "outcome": "invalid", "code": "alteration.score.invalid", "span": [24, 25]}
+{"input": "HRD Mutation", "outcome": "parsed"}
+{"input": "HRD Fusion", "outcome": "parsed"}
+{"input": "HRD A1V", "outcome": "parsed"}
+{"input": "ctDNA Amplification", "outcome": "parsed"}
+{"input": "ctDNA High", "outcome": "unsupported", "code": "alteration.signature.unsupported", "span": [6, 10]}
+{"input":"HRD A0V","outcome":"invalid","code":"hgvs.protein_position.invalid","span":[5,6]}

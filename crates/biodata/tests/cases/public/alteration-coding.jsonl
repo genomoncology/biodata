@@ -1,0 +1,22 @@
+{"input": "GENE c.9del14", "outcome": "invalid", "code": "input.trailing.invalid", "span": [11, 13]}
+{"input": "GENE c.9_10ins10", "outcome": "invalid", "code": "hgvs.base.invalid", "span": [14, 15]}
+{"input": "GENE c.9_10ins", "outcome": "invalid", "code": "hgvs.base.invalid", "span": [14, 14]}
+{"input": "GENE c.9AC>G", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [9, 10]}
+{"input": "GENE c.9A>GT", "outcome": "invalid", "code": "input.trailing.invalid", "span": [11, 12]}
+{"input": "GENE c.9_9+2insG", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [16, 16]}
+{"input": "GENE c.9-2_9insG", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [16, 16]}
+{"input": "GENE c.9_*2insG", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [15, 15]}
+{"input": "GENE c.9+8dupAA", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [15, 15]}
+{"input": "GENE c.9_10delA", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [15, 15]}
+{"input": "GENE c.9_10delAinsTT", "outcome": "invalid", "code": "hgvs.edit.invalid", "span": [20, 20]}
+{"input": "GENE c.9_10insNC_000001.11:g.1_5", "outcome": "invalid", "code": "input.trailing.invalid", "span": [16, 32]}
+{"input": " GENE c.9A>T  ", "outcome": "parsed", "render": "GENE c.9A>T"}
+{"input": "GENE c.9A>T p.Ala3Val", "outcome": "parsed", "render": "GENE A3V c.9A>T"}
+{"input": "GENE c.0003~c.0009 Missense", "outcome": "parsed", "render": "GENE c.3-c.9 Missense"}
+{"input": "GENE c.?delA", "outcome": "parsed"}
+{"input": "GENE c.9+1_9+2delAA", "outcome": "parsed"}
+{"input": "GENE c.*9_*10delAA", "outcome": "parsed"}
+{"input": "GENE c.-10_-9delAA", "outcome": "parsed"}
+{"input": "GENE c.-1_1delAA", "outcome": "parsed"}
+{"input": "GENE c.9+1_10-1delAA", "outcome": "parsed"}
+{"input": "GENE c.9_*2delAA", "outcome": "parsed"}

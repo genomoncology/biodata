@@ -1,0 +1,114 @@
+{"input": "NP_004324.2:p.Val600Glu", "outcome": "parsed"}
+{"input": "ENSP00000288602.6:p.Val600Glu", "outcome": "parsed"}
+{"input": "LRG_199p1:p.Val600Glu", "outcome": "parsed"}
+{"input":"p.V600E","outcome":"parsed","render":"p.Val600Glu","value":{"change":{"protein":{"substitution":{"site":{"residue":"Val","position":600},"to":"Glu"}}}}}
+{"input":"p.Val600Glu","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Val","position":600},"to":"Glu"}}}}}
+{"input":"p.Gly0Ala","outcome":"invalid","code":"hgvs.protein_position.invalid","span":[5,6]}
+{"input":"p.Gly1Ala","outcome":"parsed"}
+{"input":"p.Gly4294967295Ala","outcome":"parsed"}
+{"input":"p.Gly4294967296Ala","outcome":"invalid","code":"hgvs.protein_position.invalid","span":[5,15]}
+{"input": "p.(Arg97Profs*23)", "outcome": "parsed", "render": "p.(Arg97ProfsTer23)"}
+{"input": "p.R97Pfs*23", "outcome": "parsed", "render": "p.Arg97ProfsTer23"}
+{"input": "p.Arg97ProfsTer23", "outcome": "parsed"}
+{"input": "p.R97fs", "outcome": "parsed", "render": "p.Arg97fs"}
+{"input": "p.Met1ext-5", "outcome": "parsed"}
+{"input": "p.Ter110Glnext*17", "outcome": "parsed", "render": "p.Ter110GlnextTer17"}
+{"input": "p.Leu858=", "outcome": "parsed"}
+{"input": "p.Met1?", "outcome": "parsed"}
+{"input": "p.Lys2_Gly3insGlnSerLys", "outcome": "parsed"}
+{"input": "p.A11del", "outcome": "parsed", "render": "p.Ala11del"}
+{"input": "p.0", "outcome": "parsed"}
+{"input": "p.B17=", "outcome": "parsed", "render": "p.Asx17="}
+{"input": "p.?", "outcome": "parsed"}
+{"input": "p.=", "outcome": "parsed"}
+{"input": "p.(0)", "outcome": "parsed"}
+{"input": "p.Gly5_Gly7dup", "outcome": "parsed"}
+{"input": "p.Gly5_Gly7delinsAlaSer", "outcome": "parsed"}
+{"input": "p.Ter110GlnextTer?", "outcome": "parsed"}
+{"input": "p.Met1Valext-?", "outcome": "parsed"}
+{"input": "p.Arg97ProfsTer?", "outcome": "parsed"}
+{"input": "p.X8Z", "outcome": "parsed", "render": "p.Xaa8Glx"}
+{"input": "p.U8O", "outcome": "parsed", "render": "p.Sec8Pyl"}
+{"input": "p.W8*", "outcome": "parsed", "render": "p.Trp8Ter"}
+{"input": "p.Gln18[23]", "outcome": "unsupported", "code": "hgvs.protein_repeat.unsupported", "span": [7, 8]}
+{"input": "p.Lys2_Gly3ins23", "outcome": "unsupported", "code": "hgvs.protein_inserted_count.unsupported", "span": [14, 16]}
+{"input": "p.Lys2_Gly3insX[23]", "outcome": "unsupported", "code": "hgvs.protein_inserted_count.unsupported", "span": [14, 16]}
+{"input": "p.Ala2_Gly3=", "outcome": "unsupported", "code": "hgvs.protein_range_equality.unsupported", "span": [11, 12]}
+{"input":"p.A41G","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Ala","position":41},"to":"Gly"}}}},"render":"p.Ala41Gly"}
+{"input":"p.Ala41Gly","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Ala","position":41},"to":"Gly"}}}}}
+{"input":"p.R41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Arg","position":41},"to":"Ala"}}}},"render":"p.Arg41Ala"}
+{"input":"p.Arg41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Arg","position":41},"to":"Ala"}}}}}
+{"input":"p.N41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Asn","position":41},"to":"Ala"}}}},"render":"p.Asn41Ala"}
+{"input":"p.Asn41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Asn","position":41},"to":"Ala"}}}}}
+{"input":"p.D41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Asp","position":41},"to":"Ala"}}}},"render":"p.Asp41Ala"}
+{"input":"p.Asp41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Asp","position":41},"to":"Ala"}}}}}
+{"input":"p.C41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Cys","position":41},"to":"Ala"}}}},"render":"p.Cys41Ala"}
+{"input":"p.Cys41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Cys","position":41},"to":"Ala"}}}}}
+{"input":"p.Q41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Gln","position":41},"to":"Ala"}}}},"render":"p.Gln41Ala"}
+{"input":"p.Gln41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Gln","position":41},"to":"Ala"}}}}}
+{"input":"p.E41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Glu","position":41},"to":"Ala"}}}},"render":"p.Glu41Ala"}
+{"input":"p.Glu41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Glu","position":41},"to":"Ala"}}}}}
+{"input":"p.G41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Gly","position":41},"to":"Ala"}}}},"render":"p.Gly41Ala"}
+{"input":"p.Gly41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Gly","position":41},"to":"Ala"}}}}}
+{"input":"p.H41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"His","position":41},"to":"Ala"}}}},"render":"p.His41Ala"}
+{"input":"p.His41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"His","position":41},"to":"Ala"}}}}}
+{"input":"p.I41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Ile","position":41},"to":"Ala"}}}},"render":"p.Ile41Ala"}
+{"input":"p.Ile41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Ile","position":41},"to":"Ala"}}}}}
+{"input":"p.L41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Leu","position":41},"to":"Ala"}}}},"render":"p.Leu41Ala"}
+{"input":"p.Leu41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Leu","position":41},"to":"Ala"}}}}}
+{"input":"p.K41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Lys","position":41},"to":"Ala"}}}},"render":"p.Lys41Ala"}
+{"input":"p.Lys41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Lys","position":41},"to":"Ala"}}}}}
+{"input":"p.M41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Met","position":41},"to":"Ala"}}}},"render":"p.Met41Ala"}
+{"input":"p.Met41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Met","position":41},"to":"Ala"}}}}}
+{"input":"p.F41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Phe","position":41},"to":"Ala"}}}},"render":"p.Phe41Ala"}
+{"input":"p.Phe41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Phe","position":41},"to":"Ala"}}}}}
+{"input":"p.P41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Pro","position":41},"to":"Ala"}}}},"render":"p.Pro41Ala"}
+{"input":"p.Pro41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Pro","position":41},"to":"Ala"}}}}}
+{"input":"p.S41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Ser","position":41},"to":"Ala"}}}},"render":"p.Ser41Ala"}
+{"input":"p.Ser41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Ser","position":41},"to":"Ala"}}}}}
+{"input":"p.T41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Thr","position":41},"to":"Ala"}}}},"render":"p.Thr41Ala"}
+{"input":"p.Thr41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Thr","position":41},"to":"Ala"}}}}}
+{"input":"p.W41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Trp","position":41},"to":"Ala"}}}},"render":"p.Trp41Ala"}
+{"input":"p.Trp41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Trp","position":41},"to":"Ala"}}}}}
+{"input":"p.Y41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Tyr","position":41},"to":"Ala"}}}},"render":"p.Tyr41Ala"}
+{"input":"p.Tyr41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Tyr","position":41},"to":"Ala"}}}}}
+{"input":"p.V41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Val","position":41},"to":"Ala"}}}},"render":"p.Val41Ala"}
+{"input":"p.Val41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Val","position":41},"to":"Ala"}}}}}
+{"input":"p.U41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Sec","position":41},"to":"Ala"}}}},"render":"p.Sec41Ala"}
+{"input":"p.Sec41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Sec","position":41},"to":"Ala"}}}}}
+{"input":"p.O41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Pyl","position":41},"to":"Ala"}}}},"render":"p.Pyl41Ala"}
+{"input":"p.Pyl41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Pyl","position":41},"to":"Ala"}}}}}
+{"input":"p.*41A","outcome":"invalid","code":"hgvs.protein_edit.invalid","span":[6,6]}
+{"input":"p.Ter41Ala","outcome":"invalid","code":"hgvs.protein_edit.invalid","span":[10,10]}
+{"input":"p.B41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Asx","position":41},"to":"Ala"}}}},"render":"p.Asx41Ala"}
+{"input":"p.Asx41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Asx","position":41},"to":"Ala"}}}}}
+{"input":"p.Z41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Glx","position":41},"to":"Ala"}}}},"render":"p.Glx41Ala"}
+{"input":"p.Glx41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Glx","position":41},"to":"Ala"}}}}}
+{"input":"p.X41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Xaa","position":41},"to":"Ala"}}}},"render":"p.Xaa41Ala"}
+{"input":"p.Xaa41Ala","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Xaa","position":41},"to":"Ala"}}}}}
+{"input": "p.[Ala6Gly;Ser9del]", "outcome": "unsupported", "code": "hgvs.protein_allele.unsupported", "span": [2, 3]}
+{"input": "p.([Ala6Gly;Ser9del])", "outcome": "unsupported", "code": "hgvs.protein_allele.unsupported", "span": [3, 4]}
+{"input": "p.Ala4ext-7", "outcome": "invalid", "code": "hgvs.protein_edit.invalid", "span": [10, 11]}
+{"input": "p.Met4ext-7", "outcome": "invalid", "code": "hgvs.protein_edit.invalid", "span": [10, 11]}
+{"input": "p.Ala4GlyextTer7", "outcome": "unsupported", "code": "hgvs.protein_extension.unsupported", "span": [9, 12]}
+{"input": "p.0?", "outcome": "unsupported", "code": "hgvs.protein_uncertain_no_product.unsupported", "span": [3, 4]}
+{"input": "p.Leu8extTer5", "outcome": "unsupported", "code": "hgvs.protein_extension.unsupported", "span": [6, 9]}
+{"input": "p.unresolved", "outcome": "unsupported", "code": "hgvs.protein_opaque.unsupported", "span": [2, 12]}
+{"input": "p.(unclear)", "outcome": "unsupported", "code": "hgvs.protein_opaque.unsupported", "span": [3, 10]}
+{"input": "p.Asn8fsX?", "outcome": "unsupported", "code": "hgvs.protein_legacy_stop.unsupported", "span": [8, 10]}
+{"input": "p.Gly8ProfsX?", "outcome": "unsupported", "code": "hgvs.protein_legacy_stop.unsupported", "span": [11, 13]}
+{"input": "p.Ala8(Gly^Ser)fsTer6", "outcome": "unsupported", "code": "hgvs.protein_residue_choice.unsupported", "span": [6, 7]}
+{"input": "p.8GS[4]", "outcome": "unsupported", "code": "hgvs.protein_repeat.unsupported", "span": [2, 3]}
+{"input": "p.(008_009GS[4])", "outcome": "unsupported", "code": "hgvs.protein_repeat.unsupported", "span": [3, 6]}
+{"input": "p.A8G(;)S9T", "outcome": "unsupported", "code": "hgvs.protein_allele.unsupported", "span": [5, 8]}
+{"input": "p.Gly8fsTer1", "outcome": "invalid", "code": "hgvs.protein_edit.invalid", "span": [12, 12]}
+{"input": "p.Gly8TerfsTer6", "outcome": "invalid", "code": "hgvs.protein_edit.invalid", "span": [15, 15]}
+{"input": "p.Ter8ProfsTer6", "outcome": "invalid", "code": "hgvs.protein_edit.invalid", "span": [15, 15]}
+{"input": "p.A10_G11insSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS", "outcome": "parsed", "render": "p.Ala10_Gly11insSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSerSer"}
+{"input": "p.A10_G11insSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS", "outcome": "limit_exceeded", "code": "input.render_length.limit"}
+{"input": "NP_001234.1:p.(A10_G11insSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS)", "outcome": "limit_exceeded", "code": "input.render_length.limit"}
+{"input": "p.u", "outcome": "invalid", "code": "hgvs.protein_residue.invalid", "span": [2, 3]}
+{"input": "p.glyfs", "outcome": "invalid", "code": "hgvs.protein_residue.invalid", "span": [2, 3]}
+{"input": "p.glycon", "outcome": "invalid", "code": "hgvs.protein_residue.invalid", "span": [2, 3]}
+{"input":"p.Ala358_Ter359insGlyAla","outcome":"parsed"}
+{"input":"p.Ala7_Gly8?","outcome":"invalid","code":"hgvs.protein_edit.invalid","span":[12,12]}

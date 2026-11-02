@@ -1,0 +1,27 @@
+[package]
+name = "biodata"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[features]
+default = []
+serde = ["dep:serde"]
+schema = ["serde", "dep:schemars"]
+
+[dependencies]
+serde = { version = "1.0.229", default-features = false, features = ["std", "derive"], optional = true }
+schemars = { version = "1.2.3", default-features = false, features = ["derive", "std"], optional = true }
+
+winnow = { version = "1.0.4", default-features = false, features = ["ascii", "alloc"] }
+
+[dev-dependencies]
+biodata = { path = ".", features = ["serde"] }
+serde_json = { version = "1.0.154", features = ["float_roundtrip", "raw_value"] }
+proptest = "1"
+flate2 = "1.1.10"
+jsonschema = { version = "0.46.0", default-features = false }
+
+[lints]
+workspace = true

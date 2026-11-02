@@ -1,0 +1,18 @@
+name = "GA4GH Variation Representation Specification validation fixtures"
+version = "2.1.1"
+revision = "8e2bcd3fab401e0f55518d5590fa7c757868ae78"
+origin = "https://github.com/ga4gh/vrs/tree/2.1.1/validation/json"
+license = "Apache-2.0"
+license_file = "LICENSE"
+attribution = "Global Alliance for Genomics and Health Variation Representation group"
+transformation = "Files copied without modification from the tagged repository."
+
+[[file]]
+path = "models.json"
+source_path = "validation/json/models.json"
+sha256 = "891b78e3d70d241c239b55bd9b23581007e767efbf06a0d9f4021666d507fcf1"
+
+[[file]]
+path = "functions.json"
+source_path = "validation/json/functions.json"
+sha256 = "b6e14809dbc75b61e6c0e42ed405d42f044a4e9b4254aed0ff8b390b5c310f17"

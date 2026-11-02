@@ -1,0 +1,13 @@
+{"input":"g.100_99del","outcome":"invalid","code":"hgvs.position.invalid","span":[8,9]}
+{"input":"c.100_50del","outcome":"invalid","code":"hgvs.position.invalid","span":[8,9]}
+{"input":"r.*41u>a","outcome":"parsed"}
+{"input":"p.Ter110Gln","outcome":"invalid","code":"hgvs.protein_edit.invalid","span":[11,11]}
+{"input":"c.(100_101)_(90_99)del","outcome":"invalid","code":"hgvs.position.invalid","span":[19,20]}
+{"input":"c.100_(90_99)del","outcome":"invalid","code":"hgvs.position.invalid","span":[13,14]}
+{"input":"c.(100_101)_90del","outcome":"invalid","code":"hgvs.position.invalid","span":[14,15]}
+{"input":"c.(90_100)_(99_110)del","outcome":"parsed"}
+{"input":"c.(?_100)_(90_?)del","outcome":"parsed"}
+{"input":"c.90_(90_99)del","outcome":"parsed"}
+{"input":"c.(90_99)_99del","outcome":"parsed"}
+{"input":"g.?_?inv","outcome":"unsupported","code":"hgvs.unknown_inversion.unsupported","span":[8,8],"source":{"urls":["https://hgvs-nomenclature.org/stable/recommendations/DNA/inversion/","https://hgvs-nomenclature.org/stable/recommendations/uncertain/"],"note":"Unknown endpoints do not prove a one-base interval. Exact-form conformance is unresolved, so the parser refuses the form without declaring it invalid."}}
+{"input":"g.(?_?)inv","outcome":"unsupported","code":"hgvs.unknown_inversion.unsupported","span":[10,10],"source":{"urls":["https://hgvs-nomenclature.org/stable/recommendations/DNA/inversion/","https://hgvs-nomenclature.org/stable/recommendations/uncertain/"],"note":"Unknown uncertainty bounds do not prove a one-base interval. Exact-form conformance is unresolved."}}

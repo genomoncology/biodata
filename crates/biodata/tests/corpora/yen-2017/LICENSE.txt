@@ -1,0 +1,5 @@
+Yen et al. 2017 made the article data available under CC0 1.0 unless otherwise stated.
+https://creativecommons.org/publicdomain/zero/1.0/
+https://pmc.ncbi.nlm.nih.gov/articles/PMC5267466/
+
+This directory contains a derived table of the article data. It does not contain the publisher workbook.

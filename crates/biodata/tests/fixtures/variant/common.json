@@ -1,0 +1,685 @@
+[
+  {
+    "name": "braf-grch37",
+    "kind": "allele",
+    "build": "GRCh37",
+    "sources": [
+      "https://reg.genome.network/allele?hgvs=NM_004333.4%3Ac.1799T%3EA"
+    ],
+    "hgvs": [
+      "NC_000007.13:g.140453136A>T",
+      "NM_004333.4:c.1799T>A",
+      "NP_004324.2:p.Val600Glu"
+    ],
+    "identifiers": [
+      "CA123643",
+      "clinvar:13961",
+      "rs113488022"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_000007.13",
+        "span": {
+          "start": 140453135,
+          "end": 140453136
+        }
+      },
+      "reference": "A",
+      "alternate": "T"
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_000007.13:140453135:A:T"
+      }
+    ]
+  },
+  {
+    "name": "braf-grch38",
+    "kind": "allele",
+    "build": "GRCh38",
+    "sources": [
+      "https://reg.genome.network/allele?hgvs=NM_004333.4%3Ac.1799T%3EA"
+    ],
+    "hgvs": [
+      "NC_000007.14:g.140753336A>T"
+    ],
+    "identifiers": [
+      "CA123643",
+      "clinvar:13961",
+      "rs113488022"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_000007.14",
+        "span": {
+          "start": 140753335,
+          "end": 140753336
+        }
+      },
+      "reference": "A",
+      "alternate": "T"
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_000007.14:140753335:A:T"
+      }
+    ]
+  },
+  {
+    "name": "rs113488022-all-candidates",
+    "kind": "identity",
+    "input": "rs113488022",
+    "sources": [
+      "https://myvariant.info/v1/query?q=rs113488022&size=3"
+    ],
+    "identifiers": [
+      "rs113488022"
+    ],
+    "candidates": [
+      {
+        "build": "GRCh37",
+        "expression": {
+          "syntax": "hgvs.g",
+          "value": "chr7:g.140453136A>G"
+        }
+      },
+      {
+        "build": "GRCh37",
+        "expression": {
+          "syntax": "hgvs.g",
+          "value": "chr7:g.140453136A>T"
+        }
+      },
+      {
+        "build": "GRCh37",
+        "expression": {
+          "syntax": "hgvs.g",
+          "value": "chr7:g.140453136A>C"
+        }
+      }
+    ]
+  },
+  {
+    "name": "egfr-l858r-myvariant",
+    "kind": "identity",
+    "sources": [
+      "https://myvariant.info/v1/query?q=dbnsfp.genename%3AEGFR%20AND%20dbnsfp.hgvsp%3A%22p.L858R%22"
+    ],
+    "candidates": [
+      {
+        "build": "GRCh37",
+        "expression": {
+          "syntax": "hgvs.g",
+          "value": "chr7:g.55259515T>G"
+        }
+      }
+    ],
+    "query": {
+      "gene": "EGFR",
+      "protein": "L858R"
+    }
+  },
+  {
+    "name": "egfr-exon19-deletion-grch37",
+    "kind": "allele",
+    "build": "GRCh37",
+    "sources": [
+      "https://reg.genome.network/allele?hgvs=NC_000007.13%3Ag.55242469_55242471del"
+    ],
+    "hgvs": [
+      "NC_000007.13:g.55242469_55242471del"
+    ],
+    "identifiers": [
+      "CA3281357489"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_000007.13",
+        "span": {
+          "start": 55242468,
+          "end": 55242471
+        }
+      },
+      "reference": "TTA",
+      "alternate": ""
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_000007.13:55242468:TTA:"
+      }
+    ]
+  },
+  {
+    "name": "egfr-exon19-deletion-grch38",
+    "kind": "allele",
+    "build": "GRCh38",
+    "sources": [
+      "https://reg.genome.network/allele?hgvs=NC_000007.13%3Ag.55242469_55242471del"
+    ],
+    "hgvs": [
+      "NC_000007.14:g.55174776_55174778del"
+    ],
+    "identifiers": [
+      "CA3281357489"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_000007.14",
+        "span": {
+          "start": 55174775,
+          "end": 55174778
+        }
+      },
+      "reference": "TTA",
+      "alternate": ""
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_000007.14:55174775:TTA:"
+      }
+    ]
+  },
+  {
+    "name": "brca1-insertion-car-grch38",
+    "kind": "allele",
+    "build": "GRCh38",
+    "sources": [
+      "https://reg.genome.network/allele?hgvs=NM_007294.4%3Ac.5266dup"
+    ],
+    "hgvs": [
+      "NC_000017.11:g.43057065dup",
+      "NM_007294.4:c.5266dup"
+    ],
+    "identifiers": [
+      "CA003404",
+      "clinvar:17677",
+      "rs80357906"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_000017.11",
+        "span": {
+          "start": 43057065,
+          "end": 43057065
+        }
+      },
+      "reference": "",
+      "alternate": "G"
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_000017.11:43057065::G"
+      }
+    ]
+  },
+  {
+    "name": "brca1-insertion-car-grch37",
+    "kind": "allele",
+    "build": "GRCh37",
+    "sources": [
+      "https://reg.genome.network/allele?hgvs=NM_007294.4%3Ac.5266dup"
+    ],
+    "hgvs": [
+      "NC_000017.10:g.41209082dup"
+    ],
+    "identifiers": [
+      "CA003404",
+      "clinvar:17677",
+      "rs80357906"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_000017.10",
+        "span": {
+          "start": 41209082,
+          "end": 41209082
+        }
+      },
+      "reference": "",
+      "alternate": "G"
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_000017.10:41209082::G"
+      }
+    ]
+  },
+  {
+    "name": "brca1-insertion-ncbi-vcf-placement",
+    "kind": "allele",
+    "build": "GRCh38",
+    "sources": [
+      "https://api.ncbi.nlm.nih.gov/variation/v0/spdi/NC_000017.11:43057065::G/vcf_fields",
+      "https://reg.genome.network/allele?hgvs=NM_007294.4%3Ac.5266dup"
+    ],
+    "hgvs": [],
+    "identifiers": [
+      "clinvar:17677"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_000017.11",
+        "span": {
+          "start": 43057062,
+          "end": 43057062
+        }
+      },
+      "reference": "",
+      "alternate": "G"
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_000017.11:43057062::G"
+      },
+      {
+        "syntax": "vcf",
+        "value": "NC_000017.11:43057062:T:TG"
+      }
+    ],
+    "note": "NCBI provides a different placement from the CAR row. Equality or equivalence is not inferred locally."
+  },
+  {
+    "name": "tp53-resolved-grch37",
+    "kind": "allele",
+    "build": "GRCh37",
+    "sources": [
+      "https://reg.genome.network/allele?hgvs=NM_001126114.2%3Ac.1015G%3EC"
+    ],
+    "hgvs": [
+      "NM_001126114.2:c.1015G>C",
+      "NC_000017.10:g.7576636C>G"
+    ],
+    "identifiers": [
+      "CA397835261"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_000017.10",
+        "span": {
+          "start": 7576635,
+          "end": 7576636
+        }
+      },
+      "reference": "C",
+      "alternate": "G"
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_000017.10:7576635:C:G"
+      }
+    ]
+  },
+  {
+    "name": "tp53-resolved-grch38",
+    "kind": "allele",
+    "build": "GRCh38",
+    "sources": [
+      "https://reg.genome.network/allele?hgvs=NM_001126114.2%3Ac.1015G%3EC"
+    ],
+    "hgvs": [
+      "NM_001126114.2:c.1015G>C",
+      "NC_000017.11:g.7673318C>G"
+    ],
+    "identifiers": [
+      "CA397835261"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_000017.11",
+        "span": {
+          "start": 7673317,
+          "end": 7673318
+        }
+      },
+      "reference": "C",
+      "alternate": "G"
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_000017.11:7673317:C:G"
+      }
+    ]
+  },
+  {
+    "name": "tp53-paper-reference-rejection",
+    "kind": "identity",
+    "input": "NC_000017.10:g.7576633A>G",
+    "sources": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC7457206/",
+      "https://reg.genome.network/allele?hgvs=NC_000017.10%3Ag.7576633A%3EG"
+    ],
+    "hgvs": [
+      "NC_000017.10:g.7576633A>G"
+    ],
+    "expected_resolution": "rejected",
+    "rejection": "IncorrectReferenceAllele",
+    "note": "Paper spelling and registry rejection are separate source claims. No complementation or repair."
+  },
+  {
+    "name": "chek2-deletion-grch37",
+    "kind": "allele",
+    "build": "GRCh37",
+    "sources": [
+      "https://reg.genome.network/allele?hgvs=NM_007194.4%3Ac.1100del"
+    ],
+    "hgvs": [
+      "NM_007194.4:c.1100del",
+      "NC_000022.10:g.29091857del"
+    ],
+    "identifiers": [
+      "CA288251"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_000022.10",
+        "span": {
+          "start": 29091856,
+          "end": 29091857
+        }
+      },
+      "reference": "G",
+      "alternate": ""
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_000022.10:29091856:G:"
+      }
+    ]
+  },
+  {
+    "name": "chek2-deletion-grch38",
+    "kind": "allele",
+    "build": "GRCh38",
+    "sources": [
+      "https://reg.genome.network/allele?hgvs=NM_007194.4%3Ac.1100del"
+    ],
+    "hgvs": [
+      "NM_007194.4:c.1100del",
+      "NC_000022.11:g.28695869del"
+    ],
+    "identifiers": [
+      "CA288251"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_000022.11",
+        "span": {
+          "start": 28695868,
+          "end": 28695869
+        }
+      },
+      "reference": "G",
+      "alternate": ""
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_000022.11:28695868:G:"
+      }
+    ]
+  },
+  {
+    "name": "tert-clinvar-grch37",
+    "kind": "allele",
+    "build": "GRCh37",
+    "sources": [
+      "https://www.ncbi.nlm.nih.gov/clinvar/RCV006254295.1/"
+    ],
+    "hgvs": [
+      "NM_198253.3:c.-124C>T",
+      "NC_000005.9:g.1295228G>A"
+    ],
+    "identifiers": [
+      "rs1242535815"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_000005.9",
+        "span": {
+          "start": 1295227,
+          "end": 1295228
+        }
+      },
+      "reference": "G",
+      "alternate": "A"
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_000005.9:1295227:G:A"
+      }
+    ]
+  },
+  {
+    "name": "tert-clinvar-grch38",
+    "kind": "allele",
+    "build": "GRCh38",
+    "sources": [
+      "https://www.ncbi.nlm.nih.gov/clinvar/RCV006254295.1/"
+    ],
+    "hgvs": [
+      "NM_198253.3:c.-124C>T",
+      "NC_000005.10:g.1295113G>A"
+    ],
+    "identifiers": [
+      "rs1242535815"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_000005.10",
+        "span": {
+          "start": 1295112,
+          "end": 1295113
+        }
+      },
+      "reference": "G",
+      "alternate": "A"
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_000005.10:1295112:G:A"
+      }
+    ]
+  },
+  {
+    "name": "tert-car-source-error",
+    "kind": "identity",
+    "input": "NM_198253.3:c.-124C>T",
+    "sources": [
+      "https://reg.genome.network/allele?hgvs=NM_198253.3%3Ac.-124C%3ET"
+    ],
+    "hgvs": [
+      "NM_198253.3:c.-124C>T"
+    ],
+    "http_status": 400,
+    "note": "Only HTTP400 was retained. Its cause is unknown; no semantic identity rejection is established."
+  },
+  {
+    "name": "mitochondrial-grch37",
+    "kind": "allele",
+    "build": "GRCh37",
+    "sources": [
+      "https://www.ncbi.nlm.nih.gov/clinvar/variation/9589/"
+    ],
+    "hgvs": [
+      "NC_012920.1:m.3243A>G"
+    ],
+    "identifiers": [
+      "clinvar:9589",
+      "VCV000009589.86",
+      "rs199474657",
+      "CA120560"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_012920.1",
+        "span": {
+          "start": 3242,
+          "end": 3243
+        }
+      },
+      "reference": "A",
+      "alternate": "G"
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_012920.1:3242:A:G"
+      }
+    ]
+  },
+  {
+    "name": "mitochondrial-grch38",
+    "kind": "allele",
+    "build": "GRCh38",
+    "sources": [
+      "https://www.ncbi.nlm.nih.gov/clinvar/variation/9589/"
+    ],
+    "hgvs": [
+      "NC_012920.1:m.3243A>G"
+    ],
+    "identifiers": [
+      "clinvar:9589",
+      "VCV000009589.86",
+      "rs199474657",
+      "CA120560"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_012920.1",
+        "span": {
+          "start": 3242,
+          "end": 3243
+        }
+      },
+      "reference": "A",
+      "alternate": "G"
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_012920.1:3242:A:G"
+      }
+    ]
+  },
+  {
+    "name": "reference-allele-control",
+    "kind": "allele",
+    "build": "GRCh38",
+    "sources": [
+      "https://api.ncbi.nlm.nih.gov/variation/v0/refsnp/113488022"
+    ],
+    "hgvs": [
+      "NC_000007.14:g.140753336="
+    ],
+    "identifiers": [
+      "rs113488022"
+    ],
+    "allele": {
+      "location": {
+        "sequence": "NC_000007.14",
+        "span": {
+          "start": 140753335,
+          "end": 140753336
+        }
+      },
+      "reference": "A",
+      "alternate": "A"
+    },
+    "expressions": [
+      {
+        "syntax": "spdi",
+        "value": "NC_000007.14:140753335:A:A"
+      }
+    ]
+  },
+  {
+    "name": "dna-uracil-refusal",
+    "kind": "refusal",
+    "source": "synthetic constructor control",
+    "input": "U",
+    "type": "Sequence",
+    "expected_error": "sequence.invalid",
+    "note": "This is a DNA Sequence boundary, not a refusal of RNA r. HgvsText."
+  },
+  {
+    "name": "clinvar-germline-statement",
+    "kind": "statement",
+    "owner": "clinvar-assertions",
+    "sources": [
+      "https://www.ncbi.nlm.nih.gov/clinvar/variation/128042/"
+    ],
+    "record": "SCV000611258.1",
+    "variation_id": "clinvar:128042",
+    "classification": "Pathogenic",
+    "method": "ACMG Guidelines, 2015",
+    "method_citation": "25741868",
+    "evaluated": "2017-05-18",
+    "review_status": "criteria provided, single submitter",
+    "allele_origin": "unknown",
+    "submitter": "Fulgent Genetics, Fulgent Genetics"
+  },
+  {
+    "name": "civic-tier-level-statement",
+    "kind": "statement",
+    "owner": "civic-assertions",
+    "sources": [
+      "https://docs.civicdb.org/en/latest/curating/assertions.html"
+    ],
+    "record": "AID7",
+    "subject": {
+      "level": "protein",
+      "gene": {
+        "label": "BRAF"
+      },
+      "label": "V600E"
+    },
+    "condition": "melanoma",
+    "therapies": [
+      "dabrafenib",
+      "trametinib"
+    ],
+    "predicate_label": "sensitivity",
+    "classification": "Tier I - Level A",
+    "note": "Publisher documentation Figure5; no record version or evaluation date supplied."
+  },
+  {
+    "name": "clingen-expert-panel-statement",
+    "kind": "statement",
+    "owner": "clingen-assertions",
+    "sources": [
+      "https://erepo.clinicalgenome.org/evrepo/api/summary/classifications?columns=caId&values=CA000434&matchTypes=exact&pgSize=3&pg=1"
+    ],
+    "subject": "CA000434",
+    "record": "PCER000001171",
+    "version": "1.1.0",
+    "submitter": "TP53 VCEP",
+    "classification": "Pathogenic",
+    "condition": {
+      "id": "MONDO:0018875",
+      "label": "Li-Fraumeni syndrome"
+    },
+    "criteria": [
+      "PP4_Moderate",
+      "PM2_Supporting",
+      "PS2",
+      "PS3",
+      "PS4",
+      "PM1",
+      "PP3"
+    ],
+    "note": "The publisher array says PS4; separate prose says PS4_Very Strong. Neither overwrites the other.",
+    "published": "2024-08-05"
+  }
+]

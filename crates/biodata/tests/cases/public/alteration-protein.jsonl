@@ -1,0 +1,25 @@
+{"input":"BRAF V600E","outcome":"parsed","value":{"kind":{"gene":{"subject":"BRAF","change":{"protein":{"protein":{"substitution":{"site":{"residue":"Val","position":600},"to":"Glu"}}}}}}}}
+{"input": "BRAF p.V600E", "outcome": "parsed", "render": "BRAF V600E"}
+{"input": "BRAF p.Val600Glu", "outcome": "parsed", "render": "BRAF V600E"}
+{"input": " BRAF V600E ", "outcome": "parsed", "render": "BRAF V600E"}
+{"input": "BRAF V600E (acquired)", "outcome": "invalid", "code": "alteration.origin.invalid", "span": [12, 13]}
+{"input": "BRAF V600E (somatic", "outcome": "invalid", "code": "alteration.origin.invalid", "span": [19, 19]}
+{"input": "BRAF V600E  (somatic)", "outcome": "invalid", "code": "input.trailing.invalid", "span": [12, 21]}
+{"input": "BRAF  V600E", "outcome": "invalid", "code": "hgvs.protein_residue.invalid", "span": [5, 6]}
+{"input": "ERBB2 P780_G778dup", "outcome": "invalid", "code": "hgvs.protein_edit.invalid", "span": [15, 16]}
+{"input": "BRAF V600E (SOMATIC)", "outcome": "parsed", "render": "BRAF V600E (somatic)"}
+{"input": "BRAF V600E (GERMLINE)", "outcome": "parsed", "render": "BRAF V600E (germline)"}
+{"input": "ABL1 A7_A8insGS", "outcome": "parsed"}
+{"input": "ABL1 M1ext-9", "outcome": "parsed"}
+{"input": "ABL1 M1Aext-?", "outcome": "parsed"}
+{"input": "ABL1 A7del", "outcome": "parsed"}
+{"input": "ABL1 ?", "outcome": "parsed"}
+{"input": "ABL1 =", "outcome": "parsed"}
+{"input": "ABL1 0", "outcome": "parsed"}
+{"input": "ABL1 A7_A8delinsG*", "outcome": "parsed"}
+{"input": "ABL1 A7Gfs*?", "outcome": "parsed"}
+{"input": "ABL1 *41Aext*?", "outcome": "parsed"}
+{"input": "BRAF V0", "outcome": "invalid", "code": "hgvs.protein_position.invalid", "span": [6, 7]}
+{"input": "BRAF V600E junk:foo", "outcome": "invalid", "code": "input.trailing.invalid", "span": [11, 19]}
+{"input":"BRAF","outcome":"invalid","code":"alteration.shape.invalid","span":[4,4]}
+{"input":" NM_004333.4:c.1799T>A ","outcome":"unsupported","code":"alteration.hgvs.unsupported","span":[1,12]}

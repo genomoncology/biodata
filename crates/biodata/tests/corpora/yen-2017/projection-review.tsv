@@ -1,0 +1,7 @@
+source_row	case_id	classification	reference_hgvs	observed_hgvs	reason
+34	PTV035	projection_defect_0352	NM_014249.3:c.951C=	NM_014249.3:c.951del	gap-restoring deletion projects as a transcript deletion
+70	PTV069	projection_defect_0352	NM_003573.2:c.3125G=	NM_003573.2:c.3125dup	gap-restoring insertion projects as a transcript duplication
+88	PTV088	equivalent_no_change	NM_000388.3:c.3031C=	NM_000388.3:c.3031=	omitted redundant reference base C
+99	PTV099	equivalent_no_change	NM_000535.5:c.1621G=	NM_000535.5:c.1621=	omitted redundant reference base G
+117	PTV121	unavailable_reference	NM_021983.4:c.490G>C	projection.input.invalid	NM_021983.4 and alternate contig unavailable in reference catalog
+118	PTV122	unavailable_reference	NM_021983.4:c.346G>T	projection.input.invalid	NM_021983.4 and alternate contig unavailable in reference catalog

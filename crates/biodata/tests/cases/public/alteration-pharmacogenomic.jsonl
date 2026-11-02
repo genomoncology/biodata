@@ -1,0 +1,44 @@
+{"input":"GENE1 *7/*12","outcome":"parsed","value":{"kind":{"gene":{"subject":"GENE1","change":{"star_alleles":{"first":{"number":7},"second":{"number":12}}}}}}}
+{"input":"HLA-Z*03:04","outcome":"parsed","value":{"kind":{"gene":{"subject":"HLA-Z","change":{"hla":{"fields":[3,4,null,null]}}}}}}
+{"input": "GENE1 *17 allele", "outcome": "parsed"}
+{"input":"GENE1 *7B/*12A","outcome":"parsed","value":{"kind":{"gene":{"subject":"GENE1","change":{"star_alleles":{"first":{"number":7,"suffix":{"letter":66}},"second":{"number":12,"suffix":{"letter":65}}}}}}}}
+{"input":"GENE1 *7.004 allele","outcome":"parsed","value":{"kind":{"gene":{"subject":"GENE1","change":{"star_alleles":{"first":{"number":7,"suffix":{"sub":4}}}}}}}}
+{"input": "GENE1 *7.004/*12.113", "outcome": "parsed"}
+{"input": "HLA-Z*03", "outcome": "parsed"}
+{"input": "HLA-Z*03:04:05", "outcome": "parsed"}
+{"input": "HLA-Z*03:04:05:06", "outcome": "parsed"}
+{"input": "HLA-Z*03:104", "outcome": "parsed"}
+{"input": "GENE1 *65535.65535 allele", "outcome": "parsed"}
+{"input": "HLA-Z*65535:00", "outcome": "parsed"}
+{"input": "GENE1 *007 ALLELE", "outcome": "parsed", "render": "GENE1 *7 allele"}
+{"input":"GENE1 *7.4 allele","outcome":"invalid","code":"alteration.star.invalid","span":[9,10]}
+{"input":"HLA-Z*003:004","outcome":"invalid","code":"alteration.hla.invalid","span":[6,7]}
+{"input": " HLA-Z*03:04 (GERMLINE) ", "outcome": "parsed", "render": "HLA-Z*03:04 (germline)"}
+{"input": "HLA-Z*03:04N", "outcome": "parsed"}
+{"input": "HLA-Z*03:04L", "outcome": "parsed"}
+{"input": "HLA-Z*03:04S", "outcome": "parsed"}
+{"input": "HLA-Z*03:04C", "outcome": "parsed"}
+{"input": "HLA-Z*03:04A", "outcome": "parsed"}
+{"input": "HLA-Z*03:04Q", "outcome": "parsed"}
+{"input": "HLA-Z*03:04P", "outcome": "parsed"}
+{"input": "HLA-Z*03P", "outcome": "invalid", "code": "alteration.hla.invalid", "span": [8, 9]}
+{"input": "HLA-Z*03:04G", "outcome": "unsupported", "code": "alteration.hla_group.unsupported", "span": [11, 12]}
+{"input": "HLA-Z*03:04:05:06:07", "outcome": "invalid", "code": "alteration.hla.invalid", "span": [17, 18]}
+{"input": "GENE1 */*12", "outcome": "invalid", "code": "alteration.star.invalid", "span": [7, 8]}
+{"input": "GENE1 *7/", "outcome": "invalid", "code": "alteration.star.invalid", "span": [9, 9]}
+{"input": "GENE1 *7/*", "outcome": "invalid", "code": "alteration.star.invalid", "span": [10, 10]}
+{"input":"GENE1 *7.65536 allele","outcome":"invalid","code":"alteration.star.invalid","span":[9,10]}
+{"input": "GENE1 *65536 allele", "outcome": "invalid", "code": "alteration.star.invalid", "span": [7, 12]}
+{"input": "HLA-Z*03:", "outcome": "invalid", "code": "alteration.hla.invalid", "span": [9, 9]}
+{"input": "HLA-Z*03:04R", "outcome": "invalid", "code": "alteration.hla.invalid", "span": [11, 12]}
+{"input": "HLA-Z*03:04p", "outcome": "invalid", "code": "alteration.hla.invalid", "span": [11, 12]}
+{"input": "HLA-Z*3", "outcome": "invalid", "code": "alteration.hla.invalid", "span": [6, 7]}
+{"input": "HLA-Z*03:4", "outcome": "invalid", "code": "alteration.hla.invalid", "span": [9, 10]}
+{"input": "HLA-Z*03:04:5", "outcome": "invalid", "code": "alteration.hla.invalid", "span": [12, 13]}
+{"input": "HLA-Z*03:04:05:6", "outcome": "invalid", "code": "alteration.hla.invalid", "span": [15, 16]}
+{"input":"HLA-Z*65536","outcome":"invalid","code":"alteration.hla.invalid","span":[6,7]}
+{"input":"HLA-Z*03:65536","outcome":"invalid","code":"alteration.hla.invalid","span":[9,10]}
+{"input": "GENE1 *0 allele", "outcome": "invalid", "code": "alteration.star.invalid", "span": [7, 8]}
+{"input":"GENE1 *7. allele","outcome":"invalid","code":"alteration.star.invalid","span":[9,10]}
+{"input": "GENE1 *7/*65536", "outcome": "invalid", "code": "alteration.star.invalid", "span": [10, 15]}
+{"input": "HRD *1/*2", "outcome": "parsed"}

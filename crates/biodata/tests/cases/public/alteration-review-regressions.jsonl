@@ -1,0 +1,24 @@
+{"input":"BRAF Ter600Q","outcome":"invalid","code":"hgvs.protein_edit.invalid","span":[12,12]}
+{"input":"HLA-A*002:01","outcome":"invalid","code":"alteration.hla.invalid","span":[6,7]}
+{"input":"GENE *4.1 allele","outcome":"invalid","code":"alteration.star.invalid","span":[8,9]}
+{"input":"FLT3 TKD","outcome":"parsed","value":{"kind":{"gene":{"subject":"FLT3","change":{"event":{"scope":"tkd"}}}}}}
+{"input":"GEP A1V","outcome":"parsed"}
+{"input":"MyPRS A1V","outcome":"parsed"}
+{"input":"HA-High A1V","outcome":"parsed"}
+{"input":"iAMP21 A1V","outcome":"parsed"}
+{"input":"Lewis A1V","outcome":"parsed"}
+{"input":"Globo H41A","outcome":"parsed"}
+{"input":"BRAF c.(100_101)_(90_99)del","outcome":"invalid","code":"hgvs.position.invalid","span":[24,25]}
+{"input":"BRAF c.100_(90_99)del A1V","outcome":"invalid","code":"hgvs.position.invalid","span":[18,19]}
+{"input":"BRAF A1V c.(100_101)_90del","outcome":"invalid","code":"hgvs.position.invalid","span":[23,24]}
+{"input":"BRAF ITD (c.100_(90_99)del)","outcome":"invalid","code":"hgvs.position.invalid","span":[23,24]}
+{"input":"BRAF c.(90_100)_(99_110)del","outcome":"parsed"}
+{"input":"BRAF ITD (c.(90_100)_(99_110)del)","outcome":"parsed"}
+{"input":"BRAF ITD (c.(90_100)_110del)","outcome":"parsed"}
+{"input":"BRAF ITD (c.(90_100)_(99_110)del) (somatic)","outcome":"parsed"}
+{"input":"BRAF ITD (c.(90_100del))","outcome":"parsed","render":"BRAF ITD (c.90_100del)"}
+{"input":"BRAF ITD (c.((90_100)_(99_110)del))","outcome":"parsed","render":"BRAF ITD (c.(90_100)_(99_110)del)"}
+{"input":"BRAF c.(90_100del) A1V","outcome":"parsed","render":"BRAF A1V c.90_100del"}
+{"input":"BRAF A1V c.(90_100del)","outcome":"parsed","render":"BRAF A1V c.90_100del"}
+{"input":"BRAF ITD (c.(100_101)_(90_99)del)","outcome":"invalid","code":"hgvs.position.invalid","span":[29,30]}
+{"input":"BRAF ITD (c.((100_101)_(90_99)del))","outcome":"invalid","code":"hgvs.position.invalid","span":[30,31]}

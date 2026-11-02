@@ -1,0 +1,56 @@
+{"input": "GENE Mutation", "outcome": "parsed"}
+{"input": "GENE Missense", "outcome": "parsed"}
+{"input": "GENE Nonsense", "outcome": "parsed"}
+{"input": "GENE Frameshift", "outcome": "parsed"}
+{"input": "GENE Deletion", "outcome": "parsed"}
+{"input": "GENE Insertion", "outcome": "parsed"}
+{"input": "GENE Substitution", "outcome": "parsed"}
+{"input": "GENE Splice Site", "outcome": "parsed"}
+{"input": "GENE Stop Loss", "outcome": "parsed"}
+{"input": "GENE Skipping", "outcome": "parsed"}
+{"input": "GENE Promoter", "outcome": "parsed"}
+{"input": "GENE Fusion", "outcome": "parsed"}
+{"input": "GENE ITD", "outcome": "parsed"}
+{"input": "GENE PTD", "outcome": "parsed"}
+{"input": "GENE KDD", "outcome": "parsed"}
+{"input": "GENE Amplification", "outcome": "parsed"}
+{"input": "GENE Loss", "outcome": "parsed"}
+{"input": "GENE (=)", "outcome": "parsed"}
+{"input": "GENE Non-Exonic", "outcome": "parsed"}
+{"input": "GENE Splice Region", "outcome": "parsed"}
+{"input": "GENE Exon-Spanning", "outcome": "parsed"}
+{"input": "GENE Rearrangement", "outcome": "parsed"}
+{"input": "GENE CNV Equivocal", "outcome": "parsed"}
+{"input": "GENE Biallelic Mutation", "outcome": "parsed"}
+{"input": "GENE Somatic Hypermutation", "outcome": "parsed"}
+{"input": "FLT3-ITD", "outcome": "parsed", "render": "FLT3 ITD"}
+{"input": "GENE-PTD", "outcome": "parsed", "render": "GENE PTD"}
+{"input": "GENE-KDD", "outcome": "parsed", "render": "GENE KDD"}
+{"input":"GENE TKD","outcome":"parsed"}
+{"input": "GENE Exon 2-4 Skipping", "outcome": "parsed", "render": "GENE Exons 2-4 Skipping"}
+{"input": "GENE splice_site", "outcome": "parsed", "render": "GENE Splice Site"}
+{"input": "GENE SpliceSite", "outcome": "parsed", "render": "GENE Splice Site"}
+{"input": "GENE stop-loss", "outcome": "parsed", "render": "GENE Stop Loss"}
+{"input": "GENE somatichypermutation", "outcome": "parsed", "render": "GENE Somatic Hypermutation"}
+{"input": "GENE NonExonic", "outcome": "parsed", "render": "GENE Non-Exonic"}
+{"input": "GENE Exon Spanning", "outcome": "parsed", "render": "GENE Exon-Spanning"}
+{"input": "GENE cnv_equivocal", "outcome": "parsed", "render": "GENE CNV Equivocal"}
+{"input": "GENE Exon 2 Amplification (somatic)", "outcome": "parsed"}
+{"input":"GENE TKD (somatic)","outcome":"parsed"}
+{"input": "GENE Codon 4294967295 Missense", "outcome": "parsed"}
+{"input": "GENE Inversion", "outcome": "unsupported", "code": "alteration.inversion.unsupported", "span": [5, 14]}
+{"input": "GENE Wild Type", "outcome": "unsupported", "code": "alteration.wild_type.unsupported", "span": [5, 14]}
+{"input": "GENE Status Unknown", "outcome": "unsupported", "code": "alteration.status_unknown.unsupported", "span": [5, 19]}
+{"input": "GENE Exon 0 Deletion", "outcome": "invalid", "code": "alteration.event.invalid", "span": [10, 11]}
+{"input": "GENE Exon 65536 Deletion", "outcome": "invalid", "code": "alteration.event.invalid", "span": [10, 15]}
+{"input": "GENE Exons 4-2 Loss", "outcome": "invalid", "code": "alteration.event.invalid", "span": [13, 14]}
+{"input": "GENE Exons 2 Mutation", "outcome": "invalid", "code": "alteration.event.invalid", "span": [12, 12]}
+{"input": "GENE Exons 1-3 Mutation", "outcome": "invalid", "code": "alteration.event.invalid", "span": [23, 23]}
+{"input": "GENE Codon 842", "outcome": "invalid", "code": "alteration.event.invalid", "span": [14, 14]}
+{"input": "GENE Codon 0 Missense", "outcome": "invalid", "code": "alteration.event.invalid", "span": [11, 12]}
+{"input": "GENE Codon 4294967296 Missense", "outcome": "invalid", "code": "alteration.event.invalid", "span": [11, 21]}
+{"input": "GENE Codon 12 Deletion", "outcome": "invalid", "code": "alteration.event.invalid", "span": [22, 22]}
+{"input": "GENE TKD Fusion", "outcome": "invalid", "code": "alteration.event.invalid", "span": [15, 15]}
+{"input": "GENE-ITD (somatic)", "outcome": "parsed", "render": "GENE ITD (somatic)"}
+{"input": "GENE-ITD ", "outcome": "parsed", "render": "GENE ITD"}
+{"input": "GENE-ITD Fusion", "outcome": "parsed"}

@@ -1,0 +1,11 @@
+license = "MIT"
+origin = "Public value contract fixture from the MIT source snapshot bc6ca40de65c02c3e9aecce65b4a7294aa334727."
+
+[[file]]
+path = "common.json"
+sha256 = "fceac7fd5e2359a23518bc67b9912f4bba4058f17db85f6bcc6b760b81fd2ef0"
+
+[[file]]
+path = "joint.json"
+sha256 = "5aec06a1fce68a256acc0b5a7e5d87c57f79b70516c6c852103d05e8fb17b965"
+origin = "Synthetic public value fixture from the MIT source snapshot e7da7041a6e83b557f9a9e6b3065ae0a66bc44b0; no ISCN cases."
