@@ -280,7 +280,12 @@ fn plain_record<T: DeserializeOwned + Serialize>(
 ) -> Result<(), serde_json::Error> {
     let parsed: T = serde_json::from_value(object.clone())?;
     let output = serde_json::to_value(parsed)?;
-    let array = Value::Array(order.iter().map(|key| object[*key].clone()).collect());
+    let array = Value::Array(
+        order
+            .iter()
+            .map(|key| object.get(*key).cloned().unwrap_or(Value::Null))
+            .collect(),
+    );
     let binary: T = serde::Deserialize::deserialize(BinaryRecord(array))?;
     assert_eq!(
         serde_json::to_value(binary)?,
@@ -292,6 +297,10 @@ fn plain_record<T: DeserializeOwned + Serialize>(
 
 // Count declarations from the source, including records that bypass the macro.
 // Adding either kind without a witness must fail this walk.
+#[expect(
+    clippy::disallowed_methods,
+    reason = "This test reads the source tree to detect records without witnesses"
+)]
 fn source_plain_records(
     folder: &std::path::Path,
 ) -> std::io::Result<std::collections::BTreeMap<String, bool>> {
@@ -345,7 +354,10 @@ fn source_plain_records(
                     && (shared
                         || (attributes.contains("Deserialize") && !attributes.contains("from =")))
                 {
-                    let name = declaration.split(['<', ' ', '{']).next().unwrap();
+                    let name = declaration
+                        .split(['<', ' ', '{'])
+                        .next()
+                        .expect("split always yields the declaration prefix");
                     assert!(
                         records.insert(name.to_owned(), shared).is_none(),
                         "duplicate record {name}"
