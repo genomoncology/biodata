@@ -6,6 +6,8 @@ PYTHON := $(shell for candidate in python3 python3.14 python3.13 python3.12 pyth
 endif
 
 SCHEMA_EXPORT ?= target/public-schemas
+CARGO_SHEAR_VERSION := 1.14.0
+CARGO_SHEAR_ROOT := target/tools/cargo-shear
 
 .PHONY: gate check-values
 
@@ -18,6 +20,12 @@ gate:
 	cargo test --workspace --all-features --locked
 	$(PYTHON) scripts/check-macro-callers.py
 	$(PYTHON) scripts/check-schema-compatibility.py --choices-only --output $(SCHEMA_EXPORT)
+	$(MAKE) check-dependencies
+
+.PHONY: check-dependencies
+check-dependencies:
+	cargo install cargo-shear --version =$(CARGO_SHEAR_VERSION) --locked --root $(CARGO_SHEAR_ROOT)
+	$(CARGO_SHEAR_ROOT)/bin/cargo-shear shear --deny-warnings
 
 check-values:
 	cargo test --workspace --all-features --locked --test text_literals --test values_author_contracts
