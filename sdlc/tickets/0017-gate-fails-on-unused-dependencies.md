@@ -1,6 +1,7 @@
 # 0017 — gate-fails-on-unused-dependencies
 
-Status: OPEN.
+Status: COMPLETE.
+Landed: 62ffcafd18a08b897aa0a1a600754b8bdbb096ba
 
 Milestone: 1
 
