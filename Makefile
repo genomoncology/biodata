@@ -6,7 +6,8 @@ PYTHON := $(shell for candidate in python3 python3.14 python3.13 python3.12 pyth
 endif
 
 SCHEMA_EXPORT ?= target/public-schemas
-CARGO_SHEAR_VERSION := 1.14.0
+# Keep the locked tool dependencies compatible with rust-toolchain.toml.
+CARGO_SHEAR_VERSION := 1.12.0
 CARGO_SHEAR_ROOT := target/tools/cargo-shear
 
 .PHONY: gate check-values

@@ -31,10 +31,12 @@ def main():
             output.seek(0)
             diagnostic = output.read()
         print(diagnostic, flush=True)
-        if (result.returncode == 0 or "memchr" not in diagnostic
-                or "biodata" not in diagnostic
-                or "shear/unused_dependency" not in diagnostic):
-            raise SystemExit("gate did not reject the injected unused dependency")
+        if result.returncode == 0:
+            raise SystemExit("gate accepted the injected unused dependency")
+        if "shear/unused_dependency" not in diagnostic:
+            raise SystemExit("gate failed before reporting an unused dependency; see output above")
+        if "memchr" not in diagnostic or "biodata" not in diagnostic:
+            raise SystemExit("unused-dependency diagnostic did not name biodata and memchr")
     finally:
         manifest.write_bytes(original_manifest)
         lock.write_bytes(original_lock)
