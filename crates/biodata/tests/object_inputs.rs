@@ -258,8 +258,13 @@ witness!(
 struct BinaryRecord(Value);
 impl<'de> serde::Deserializer<'de> for BinaryRecord {
     type Error = serde_json::Error;
-    fn is_human_readable(&self) -> bool { false }
-    fn deserialize_any<V: serde::de::Visitor<'de>>(self, visitor: V) -> Result<V::Value, Self::Error> {
+    fn is_human_readable(&self) -> bool {
+        false
+    }
+    fn deserialize_any<V: serde::de::Visitor<'de>>(
+        self,
+        visitor: V,
+    ) -> Result<V::Value, Self::Error> {
         serde::Deserializer::deserialize_any(self.0, visitor)
     }
     serde::forward_to_deserialize_any! {
@@ -269,23 +274,37 @@ impl<'de> serde::Deserializer<'de> for BinaryRecord {
     }
 }
 
-fn plain_record<T: DeserializeOwned + Serialize>(object: Value, order: &[&str]) -> Result<(), serde_json::Error> {
+fn plain_record<T: DeserializeOwned + Serialize>(
+    object: Value,
+    order: &[&str],
+) -> Result<(), serde_json::Error> {
     let parsed: T = serde_json::from_value(object.clone())?;
     let output = serde_json::to_value(parsed)?;
     let array = Value::Array(order.iter().map(|key| object[*key].clone()).collect());
     let binary: T = serde::Deserialize::deserialize(BinaryRecord(array))?;
-    assert_eq!(serde_json::to_value(binary)?, output, "binary field positions stay stable");
+    assert_eq!(
+        serde_json::to_value(binary)?,
+        output,
+        "binary field positions stay stable"
+    );
     refuses_array::<T>(object, order)
 }
 
 // Count declarations from the source, including records that bypass the macro.
 // Adding either kind without a witness must fail this walk.
-fn source_plain_records(folder: &std::path::Path) -> std::io::Result<std::collections::BTreeMap<String, bool>> {
+fn source_plain_records(
+    folder: &std::path::Path,
+) -> std::io::Result<std::collections::BTreeMap<String, bool>> {
     let mut records = std::collections::BTreeMap::new();
     for entry in std::fs::read_dir(folder)? {
         let path = entry?.path();
-        if path.is_dir() { records.extend(source_plain_records(&path)?); continue; }
-        if path.extension().is_none_or(|extension| extension != "rs") { continue; }
+        if path.is_dir() {
+            records.extend(source_plain_records(&path)?);
+            continue;
+        }
+        if path.extension().is_none_or(|extension| extension != "rs") {
+            continue;
+        }
         let source = std::fs::read_to_string(path)?;
         let mut attributes = String::new();
         let mut depth = 0_i32;
@@ -293,29 +312,50 @@ fn source_plain_records(folder: &std::path::Path) -> std::io::Result<std::collec
         let mut escaped = false;
         let mut shared = false;
         for line in source.lines().map(str::trim) {
-            if line.starts_with("crate::serde_object::object_record!") { shared = true; }
+            if line.starts_with("crate::serde_object::object_record!") {
+                shared = true;
+            }
             if depth > 0 || line.starts_with("#[") {
                 attributes.push_str(line);
                 for character in line.chars() {
-                    if escaped { escaped = false; continue; }
-                    if quoted && character == '\\' { escaped = true; continue; }
-                    if character == '"' { quoted = !quoted; }
+                    if escaped {
+                        escaped = false;
+                        continue;
+                    }
+                    if quoted && character == '\\' {
+                        escaped = true;
+                        continue;
+                    }
+                    if character == '"' {
+                        quoted = !quoted;
+                    }
                     if !quoted {
-                        if character == '[' { depth += 1; }
-                        if character == ']' { depth -= 1; }
+                        if character == '[' {
+                            depth += 1;
+                        }
+                        if character == ']' {
+                            depth -= 1;
+                        }
                     }
                 }
                 continue;
             }
             if let Some(declaration) = line.strip_prefix("pub struct ") {
-                if declaration.contains('{') && (shared || (attributes.contains("Deserialize")
-                    && !attributes.contains("from ="))) {
+                if declaration.contains('{')
+                    && (shared
+                        || (attributes.contains("Deserialize") && !attributes.contains("from =")))
+                {
                     let name = declaration.split(['<', ' ', '{']).next().unwrap();
-                    assert!(records.insert(name.to_owned(), shared).is_none(), "duplicate record {name}");
+                    assert!(
+                        records.insert(name.to_owned(), shared).is_none(),
+                        "duplicate record {name}"
+                    );
                 }
                 shared = false;
             }
-            if !line.starts_with("///") && !line.is_empty() { attributes.clear(); }
+            if !line.starts_with("///") && !line.is_empty() {
+                attributes.clear();
+            }
         }
     }
     Ok(records)
@@ -366,7 +406,7 @@ plain_records! {
     ClinvarHaplotype => biodata::ClinvarHaplotype, json!({"kind":"Haplotype","id":"1","accession":"VCV000000001","version":"synthetic text","number_of_chromosomes":"synthetic text","members":[]}), ["kind", "id", "accession", "version", "number_of_chromosomes", "members"];
     ClinvarHaplotypeMember => biodata::ClinvarHaplotypeMember, json!({"id":"1","allele_id":"1"}), ["id", "allele_id"];
     CohortObservation => biodata::CohortObservation, json!({"subject":{"level":"protein","gene":{"label":"SYNTH1"},"label":"p.A1T"},"dataset":"synthetic text","dataset_version":null,"unit":"samples","sample_count":1,"profiled_sample_count":null,"cohort_sample_count":null,"by_condition":[],"attribution":{"approved":null,"published":null,"source":"synthetic text","record":null,"version":null,"release":null,"submitter":null,"evaluated":null,"url":null}}), ["subject", "dataset", "dataset_version", "unit", "sample_count", "profiled_sample_count", "cohort_sample_count", "by_condition", "attribution"];
-    CompanionGroupCells => biodata::CompanionGroupCells, json!({"Diagnostic Name\n(Manufacturer)":{"text":"synthetic text","links":[]},"Indication(s) - Sample Type":{"text":"synthetic text","links":[]},"PMA (Approval Date)":{"text":"synthetic text","links":[]},"Device Indication for a Specific Group of Oncology Therapeutic Products and Trade Name (Generic) \u2013 NDA/BLA":{"text":"synthetic text","links":[]}}), ["Diagnostic Name\n(Manufacturer)", "Indication(s) - Sample Type", "PMA (Approval Date)", "Device Indication for a Specific Group of Oncology Therapeutic Products and Trade Name (Generic) \u2013 NDA/BLA"];
+    CompanionGroupCells => biodata::CompanionGroupCells, json!({"Diagnostic Name\n(Manufacturer)":{"text":"synthetic text","links":[]},"Indication(s) - Sample Type":{"text":"synthetic text","links":[]},"PMA (Approval Date)":{"text":"synthetic text","links":[]},"Device Indication for a Specific Group of Oncology Therapeutic Products and Trade Name (Generic) – NDA/BLA":{"text":"synthetic text","links":[]}}), ["Diagnostic Name\n(Manufacturer)", "Indication(s) - Sample Type", "PMA (Approval Date)", "Device Indication for a Specific Group of Oncology Therapeutic Products and Trade Name (Generic) – NDA/BLA"];
     CompanionIndividualCells => biodata::CompanionIndividualCells, json!({"Diagnostic Name (Manufacturer)":{"text":"synthetic text","links":[]},"Indication - Sample Type":{"text":"synthetic text","links":[]},"Drug Trade Name (Generic) NDA / BLA":{"text":"synthetic text","links":[]},"Biomarker(s)":{"text":"synthetic text","links":[]},"Biomarker(s) (Details)":{"text":"synthetic text","links":[]},"PMA / 510(k) /\n513(f)(2) / HDE (Approval / Clearance / Grant Date)":{"text":"synthetic text","links":[]}}), ["Diagnostic Name (Manufacturer)", "Indication - Sample Type", "Drug Trade Name (Generic) NDA / BLA", "Biomarker(s)", "Biomarker(s) (Details)", "PMA / 510(k) /\n513(f)(2) / HDE (Approval / Clearance / Grant Date)"];
     Concept => biodata::Concept, json!({"id":null,"label":"synthetic text"}), ["id", "label"];
     ConditionCount => biodata::ConditionCount, json!({"condition":{"id":null,"label":"synthetic text"},"count":1,"profiled_sample_count":null}), ["condition", "count", "profiled_sample_count"];
