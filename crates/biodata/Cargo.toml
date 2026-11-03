@@ -23,5 +23,9 @@ proptest = "1"
 flate2 = "1.1.10"
 jsonschema = { version = "0.46.0", default-features = false }
 
+[package.metadata.cargo-shear]
+# check-macro-callers.py compiles these fixtures in separate consumer crates.
+ignored-paths = ["tests/caller/*.rs"]
+
 [lints]
 workspace = true
