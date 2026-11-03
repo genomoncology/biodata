@@ -213,20 +213,22 @@ impl Span0 {
     }
 }
 
-/// A source interval with its stated build and strand, when available.
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-pub struct GenomicInterval {
-    /// Stated reference build.
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
-    pub build: Option<Build>,
-    /// Canonical chromosome.
-    pub chromosome: Chromosome,
-    /// Zero-based half-open bounds.
-    pub span: Span0,
-    /// Stated direction.
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
-    pub strand: Option<Strand>,
+crate::serde_object::object_record! {
+    /// A source interval with its stated build and strand, when available.
+    #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(serde::Serialize))]
+    pub struct GenomicInterval {
+        /// Stated reference build.
+        #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+        pub build: Option<Build>,
+        /// Canonical chromosome.
+        pub chromosome: Chromosome,
+        /// Zero-based half-open bounds.
+        pub span: Span0,
+        /// Stated direction.
+        #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+        pub strand: Option<Strand>,
+    }
 }
 impl GenomicInterval {
     /// Bind an explicitly selected build to a chromosome and bounds.
@@ -274,13 +276,15 @@ impl GenomicInterval {
     }
 }
 
-/// A stated allele associated with the caller's selected reference build.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
-pub struct AlleleKey {
-    build: Build,
-    allele: Allele,
+crate::serde_object::object_record! {
+    /// A stated allele associated with the caller's selected reference build.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(serde::Serialize))]
+    #[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
+    pub struct AlleleKey {
+        build: Build,
+        allele: Allele,
+    }
 }
 impl AlleleKey {
     /// Construct a primary chromosome allele from explicit genomic bounds.

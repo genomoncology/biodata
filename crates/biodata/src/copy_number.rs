@@ -1,15 +1,17 @@
 //! Source-stated copy counts and changes on uncertain locations.
 use crate::{Bound, UncertainLocation};
 
-/// An absolute copy count for a source-stated sequence location.
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
-pub struct CopyNumberCount {
-    /// The sequence and possibly uncertain span being counted.
-    pub location: UncertainLocation,
-    /// Absolute number of copies, possibly bounded.
-    pub copies: Bound,
+crate::serde_object::object_record! {
+    /// An absolute copy count for a source-stated sequence location.
+    #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(serde::Serialize))]
+    #[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
+    pub struct CopyNumberCount {
+        /// The sequence and possibly uncertain span being counted.
+        pub location: UncertainLocation,
+        /// Absolute number of copies, possibly bounded.
+        pub copies: Bound,
+    }
 }
 
 /// Relative copy change, using the VRS CopyChange EFO terms.
@@ -51,13 +53,15 @@ impl CopyChange {
     }
 }
 
-/// A copy change relative to baseline ploidy, as the source states it.
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
-pub struct CopyNumberChange {
-    /// The sequence and possibly uncertain span.
-    pub location: UncertainLocation,
-    /// Source-stated relative change.
-    pub copy_change: CopyChange,
+crate::serde_object::object_record! {
+    /// A copy change relative to baseline ploidy, as the source states it.
+    #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(serde::Serialize))]
+    #[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
+    pub struct CopyNumberChange {
+        /// The sequence and possibly uncertain span.
+        pub location: UncertainLocation,
+        /// Source-stated relative change.
+        pub copy_change: CopyChange,
+    }
 }

@@ -37,39 +37,41 @@ impl HpId {
         &self.0
     }
 }
-/// One native term search candidate, without a selected identity.
-#[derive(Clone, Debug, PartialEq)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-pub struct PhenotypeHeader {
-    /// Source HP identity.
-    pub id: HpId,
-    /// Exact native label, including an empty value.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub label: Option<Box<str>>,
-    /// Native search match score with no local interpretation.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub match_score: Option<FiniteNumber>,
-    /// Native matched field name.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub matched_field: Option<Box<str>>,
-    /// Native match type label.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub match_type: Option<Box<str>>,
-    /// Publisher identity and version when supplied.
-    pub attribution: Attribution,
+crate::serde_object::object_record! {
+    /// One native term search candidate, without a selected identity.
+    #[derive(Clone, Debug, PartialEq)]
+    #[cfg_attr(feature = "serde", derive(Serialize))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    pub struct PhenotypeHeader {
+        /// Source HP identity.
+        pub id: HpId,
+        /// Exact native label, including an empty value.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub label: Option<Box<str>>,
+        /// Native search match score with no local interpretation.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub match_score: Option<FiniteNumber>,
+        /// Native matched field name.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub matched_field: Option<Box<str>>,
+        /// Native match type label.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub match_type: Option<Box<str>>,
+        /// Publisher identity and version when supplied.
+        pub attribution: Attribution,
+    }
 }
 /// Native source card, with independent HPO and Monarch metadata.
 #[derive(Clone, Debug, PartialEq)]
@@ -156,55 +158,59 @@ pub enum PhenotypeCard {
         attribution: Attribution,
     },
 }
-/// Native collection counts, without summing scopes or counting patients.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-pub struct PhenotypeAssociationCount {
-    /// Native category key.
-    pub key: Curie,
-    /// Native category.
-    pub category: Curie,
-    /// Native scope label.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub label: Option<Box<str>>,
-    /// Native closure-expanded count.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub count: Option<u64>,
-    /// Native direct count.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub count_direct: Option<u64>,
-    /// Native count including orthologs, only when supplied.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub count_with_orthologs: Option<u64>,
+crate::serde_object::object_record! {
+    /// Native collection counts, without summing scopes or counting patients.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(Serialize))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    pub struct PhenotypeAssociationCount {
+        /// Native category key.
+        pub key: Curie,
+        /// Native category.
+        pub category: Curie,
+        /// Native scope label.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub label: Option<Box<str>>,
+        /// Native closure-expanded count.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub count: Option<u64>,
+        /// Native direct count.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub count_direct: Option<u64>,
+        /// Native count including orthologs, only when supplied.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub count_with_orthologs: Option<u64>,
+    }
 }
-/// One native synonym; HPO values remain unclassified.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-pub struct PhenotypeSynonym {
-    /// Whole source text.
-    pub value: Box<str>,
-    /// Native Monarch relationship class; absent for HPO.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub relationship: Option<PhenotypeSynonymClass>,
-    /// Publisher provenance.
-    pub attribution: Attribution,
+crate::serde_object::object_record! {
+    /// One native synonym; HPO values remain unclassified.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(Serialize))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    pub struct PhenotypeSynonym {
+        /// Whole source text.
+        pub value: Box<str>,
+        /// Native Monarch relationship class; absent for HPO.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub relationship: Option<PhenotypeSynonymClass>,
+        /// Publisher provenance.
+        pub attribution: Attribution,
+    }
 }
 crate::wire_enum! { described
     /// Publisher synonym relationship class.
@@ -219,39 +225,43 @@ crate::wire_enum! { described
         Related => "related",
     }
 }
-/// One exact native cross reference, without equivalence promotion.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-pub struct PhenotypeXref {
-    /// Exact publisher reference.
-    pub id: Curie,
-    /// Native predicate when actually supplied.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub predicate: Option<Curie>,
-    /// Publisher provenance.
-    pub attribution: Attribution,
+crate::serde_object::object_record! {
+    /// One exact native cross reference, without equivalence promotion.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(Serialize))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    pub struct PhenotypeXref {
+        /// Exact publisher reference.
+        pub id: Curie,
+        /// Native predicate when actually supplied.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub predicate: Option<Curie>,
+        /// Publisher provenance.
+        pub attribution: Attribution,
+    }
 }
-/// One native direct hierarchy link, without traversal or inferred equivalence.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-pub struct PhenotypeHierarchyLink {
-    /// Exact related term identifier; native parents can be outside HP.
-    pub id: Curie,
-    /// Whole related term label.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub label: Option<Box<str>>,
-    /// Original source relation, such as super_classes or sub_classes.
-    pub relation: PhenotypeHierarchyRelation,
-    /// Publisher provenance.
-    pub attribution: Attribution,
+crate::serde_object::object_record! {
+    /// One native direct hierarchy link, without traversal or inferred equivalence.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(Serialize))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    pub struct PhenotypeHierarchyLink {
+        /// Exact related term identifier; native parents can be outside HP.
+        pub id: Curie,
+        /// Whole related term label.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub label: Option<Box<str>>,
+        /// Original source relation, such as super_classes or sub_classes.
+        pub relation: PhenotypeHierarchyRelation,
+        /// Publisher provenance.
+        pub attribution: Attribution,
+    }
 }
 
 crate::wire_enum! { described

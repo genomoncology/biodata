@@ -2,16 +2,18 @@ use crate::Text;
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// An authority and its unchanged native identifier; unknown means the authority was not stated.
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-#[cfg_attr(feature = "schema", schemars(rename = "Identifier_{T}", extend("x-identifier" = true)))]
-pub struct Identifier<T> {
-    /// Native authority spelling; the literal unknown carries an unstated authority.
-    pub namespace: IdentifierNamespace,
-    /// Native identifier value, with its original scalar type and precision.
-    pub id: T,
+crate::serde_object::object_record! {
+    /// An authority and its unchanged native identifier; unknown means the authority was not stated.
+    #[derive(Clone, Debug, PartialEq, Eq, Hash)]
+    #[cfg_attr(feature = "serde", derive(Serialize))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    #[cfg_attr(feature = "schema", schemars(rename = "Identifier_{T}", extend("x-identifier" = true)))]
+    pub struct Identifier<T> {
+        /// Native authority spelling; the literal unknown carries an unstated authority.
+        pub namespace: IdentifierNamespace,
+        /// Native identifier value, with its original scalar type and precision.
+        pub id: T,
+    }
 }
 
 impl<T> Identifier<T> {

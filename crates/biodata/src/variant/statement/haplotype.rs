@@ -2,15 +2,17 @@ use crate::{ClinVarAlleleId, ClinVarVariationId, Error, Text, VcvId};
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// One source-stated member of a native ClinVar haplotype.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-pub struct ClinvarHaplotypeMember {
-    /// Native ClinVar variation identity.
-    pub id: ClinVarVariationId,
-    /// Native ClinVar allele identity.
-    pub allele_id: ClinVarAlleleId,
+crate::serde_object::object_record! {
+    /// One source-stated member of a native ClinVar haplotype.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(Serialize))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    pub struct ClinvarHaplotypeMember {
+        /// Native ClinVar variation identity.
+        pub id: ClinVarVariationId,
+        /// Native ClinVar allele identity.
+        pub allele_id: ClinVarAlleleId,
+    }
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -20,23 +22,25 @@ enum ClinvarHaplotypeKind {
     Haplotype,
 }
 
-/// A native ClinVar haplotype, without inferred allele identity or phase.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-#[cfg_attr(feature = "schema", schemars(inline))]
-pub struct ClinvarHaplotype {
-    kind: ClinvarHaplotypeKind,
-    /// Native ClinVar variation identity.
-    pub id: ClinVarVariationId,
-    /// Native unversioned VCV accession.
-    pub accession: VcvId,
-    /// Explicit native accession version.
-    pub version: Text,
-    /// Literal NumberOfChromosomes supplied by ClinVar.
-    pub number_of_chromosomes: Text,
-    /// Complete member identities in native order.
-    pub members: Box<[ClinvarHaplotypeMember]>,
+crate::serde_object::object_record! {
+    /// A native ClinVar haplotype, without inferred allele identity or phase.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(Serialize))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    #[cfg_attr(feature = "schema", schemars(inline))]
+    pub struct ClinvarHaplotype {
+        kind: ClinvarHaplotypeKind,
+        /// Native ClinVar variation identity.
+        pub id: ClinVarVariationId,
+        /// Native unversioned VCV accession.
+        pub accession: VcvId,
+        /// Explicit native accession version.
+        pub version: Text,
+        /// Literal NumberOfChromosomes supplied by ClinVar.
+        pub number_of_chromosomes: Text,
+        /// Complete member identities in native order.
+        pub members: Box<[ClinvarHaplotypeMember]>,
+    }
 }
 impl ClinvarHaplotype {
     /// Preserve source grouping and identities without interpreting their biology.

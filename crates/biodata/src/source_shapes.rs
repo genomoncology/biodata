@@ -172,17 +172,19 @@ impl<'de> serde::Deserialize<'de> for Subject {
     }
 }
 
-/// Source-stated method or guideline.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-pub struct Method {
-    /// Source method label.
-    pub label: Text,
-    /// Source method version.
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
-    pub version: Option<Text>,
+crate::serde_object::object_record! {
+    /// Source-stated method or guideline.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(serde::Serialize))]
+    #[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    pub struct Method {
+        /// Source method label.
+        pub label: Text,
+        /// Source method version.
+        #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+        pub version: Option<Text>,
+    }
 }
 
 /// A versioned or unversioned source transcript reference.
@@ -251,50 +253,54 @@ pub enum CohortUnit {
     Tumors,
 }
 
-/// Source-stated count for one condition.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
-pub struct ConditionCount {
-    /// Source condition.
-    pub condition: Concept,
-    /// Count of the source's selected units.
-    pub count: u64,
-    /// Source-stated count of units profiled at the locus.
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
-    pub profiled_sample_count: Option<u64>,
+crate::serde_object::object_record! {
+    /// Source-stated count for one condition.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(serde::Serialize))]
+    #[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
+    pub struct ConditionCount {
+        /// Source condition.
+        pub condition: Concept,
+        /// Count of the source's selected units.
+        pub count: u64,
+        /// Source-stated count of units profiled at the locus.
+        #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+        pub profiled_sample_count: Option<u64>,
+    }
 }
 
-/// One source cohort count without a derived denominator or frequency.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
-pub struct CohortObservation {
-    /// Source variant or category.
-    pub subject: VariantRef,
-    /// Dataset family.
-    pub dataset: Text,
-    /// Source dataset release.
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
-    pub dataset_version: Option<Text>,
-    /// Kind of counted unit.
-    pub unit: CohortUnit,
-    /// Count of units with the subject.
-    pub sample_count: u64,
-    /// Source-stated units whose assay covered the locus.
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
-    pub profiled_sample_count: Option<u64>,
-    /// Source-stated cohort size, never used as a denominator here.
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
-    pub cohort_sample_count: Option<u64>,
-    /// Source-stated condition counts in order.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Vec::is_empty")
-    )]
-    pub by_condition: Vec<ConditionCount>,
-    /// Source record provenance.
-    pub attribution: Attribution,
+crate::serde_object::object_record! {
+    /// One source cohort count without a derived denominator or frequency.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(serde::Serialize))]
+    #[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
+    pub struct CohortObservation {
+        /// Source variant or category.
+        pub subject: VariantRef,
+        /// Dataset family.
+        pub dataset: Text,
+        /// Source dataset release.
+        #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+        pub dataset_version: Option<Text>,
+        /// Kind of counted unit.
+        pub unit: CohortUnit,
+        /// Count of units with the subject.
+        pub sample_count: u64,
+        /// Source-stated units whose assay covered the locus.
+        #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+        pub profiled_sample_count: Option<u64>,
+        /// Source-stated cohort size, never used as a denominator here.
+        #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+        pub cohort_sample_count: Option<u64>,
+        /// Source-stated condition counts in order.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Vec::is_empty")
+        )]
+        pub by_condition: Vec<ConditionCount>,
+        /// Source record provenance.
+        pub attribution: Attribution,
+    }
 }
 #[cfg(feature = "schema")]
 impl schemars::JsonSchema for Subject {
