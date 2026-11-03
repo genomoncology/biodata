@@ -3,7 +3,7 @@
 Status: open.
 
 Kind: idea
-When: After the BioData 1.0.0 tag and BioMCP's switch land
+When: After BioMCP 1.0 is tagged
 
 ## Problem
 
