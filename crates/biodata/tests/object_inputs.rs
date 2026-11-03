@@ -357,7 +357,7 @@ fn source_plain_records(
                     let name = declaration
                         .split(['<', ' ', '{'])
                         .next()
-                        .expect("split always yields the declaration prefix");
+                        .unwrap_or(declaration);
                     assert!(
                         records.insert(name.to_owned(), shared).is_none(),
                         "duplicate record {name}"
