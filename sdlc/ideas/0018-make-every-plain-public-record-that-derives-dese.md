@@ -1,6 +1,7 @@
 # Make every plain public record that derives Deserialize refuse a positional JSON array, through one shared declaration, so each record's reader accepts exactly the object its schema states
 
-Status: open.
+Status: closed.
+Promoted: 0019
 
 Kind: idea
 When: After the BioData 1.0.0 tag
