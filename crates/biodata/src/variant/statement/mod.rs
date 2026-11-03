@@ -1,7 +1,7 @@
 //! Source assertions without ranking, merging or clinical inference.
 use crate::{PartialDate, Pmid, SourceGeneRef, Text};
 #[cfg(feature = "serde")]
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 
 mod coding;
 pub use coding::*;
@@ -11,182 +11,190 @@ mod haplotype;
 pub use haplotype::{ClinvarHaplotype, ClinvarHaplotypeMember};
 mod reference;
 pub use reference::{Curie, VariantRef};
-/// One source claim, kept in its own framework and context.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-pub struct Statement {
-    /// Source method.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub method: Option<crate::Method>,
-    /// Source inheritance mode.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub mode_of_inheritance: Option<Term>,
-    /// Criteria assessed and not met.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "<[_]>::is_empty")
-    )]
-    pub criteria_not_met: Box<[Text]>,
-    /// Source record status.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub status: Option<Term>,
-    /// Source-owned subject reference.
-    pub subject: crate::Subject,
-    /// Claim domain.
-    pub proposition: Proposition,
-    /// Source-stated relationship.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub predicate: Option<Predicate>,
-    /// Source-stated assessment direction.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub direction: Option<Direction>,
-    /// Whole source classification label.
-    pub classification: Term,
-    /// Source evidence level or review status.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub strength: Option<Term>,
-    /// Source disease or tumor context.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub condition: Option<Concept>,
-    /// Source therapies in their native order.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "<[ _ ]>::is_empty")
-    )]
-    pub therapies: Box<[Concept]>,
-    /// Source-stated origin.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub allele_origin: Option<Term>,
-    /// Source gene context.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub gene_context: Option<SourceGeneRef>,
-    /// Source criterion labels in source order.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "<[ _ ]>::is_empty")
-    )]
-    pub criteria: Box<[Text]>,
-    /// Source publications.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "<[ _ ]>::is_empty")
-    )]
-    pub citations: Box<[Pmid]>,
-    /// One source record and its provenance.
-    pub attribution: Attribution,
+crate::serde_object::object_record! {
+    /// One source claim, kept in its own framework and context.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(Serialize))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    pub struct Statement {
+        /// Source method.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub method: Option<crate::Method>,
+        /// Source inheritance mode.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub mode_of_inheritance: Option<Term>,
+        /// Criteria assessed and not met.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "<[_]>::is_empty")
+        )]
+        pub criteria_not_met: Box<[Text]>,
+        /// Source record status.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub status: Option<Term>,
+        /// Source-owned subject reference.
+        pub subject: crate::Subject,
+        /// Claim domain.
+        pub proposition: Proposition,
+        /// Source-stated relationship.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub predicate: Option<Predicate>,
+        /// Source-stated assessment direction.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub direction: Option<Direction>,
+        /// Whole source classification label.
+        pub classification: Term,
+        /// Source evidence level or review status.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub strength: Option<Term>,
+        /// Source disease or tumor context.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub condition: Option<Concept>,
+        /// Source therapies in their native order.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "<[ _ ]>::is_empty")
+        )]
+        pub therapies: Box<[Concept]>,
+        /// Source-stated origin.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub allele_origin: Option<Term>,
+        /// Source gene context.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub gene_context: Option<SourceGeneRef>,
+        /// Source criterion labels in source order.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "<[ _ ]>::is_empty")
+        )]
+        pub criteria: Box<[Text]>,
+        /// Source publications.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "<[ _ ]>::is_empty")
+        )]
+        pub citations: Box<[Pmid]>,
+        /// One source record and its provenance.
+        pub attribution: Attribution,
+    }
 }
-/// A source label with explicitly supported codings in source order.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-pub struct Term {
-    /// Original label.
-    pub label: Text,
-    /// Documented framework codings.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "<[ _ ]>::is_empty")
-    )]
-    pub codings: Box<[Coding]>,
+crate::serde_object::object_record! {
+    /// A source label with explicitly supported codings in source order.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(Serialize))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    pub struct Term {
+        /// Original label.
+        pub label: Text,
+        /// Documented framework codings.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "<[ _ ]>::is_empty")
+        )]
+        pub codings: Box<[Coding]>,
+    }
 }
-/// One source concept with its optional ontology identifier.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-pub struct Concept {
-    /// Source-stated concept identifier.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub id: Option<Curie>,
-    /// Original concept label.
-    pub label: Text,
+crate::serde_object::object_record! {
+    /// One source concept with its optional ontology identifier.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(Serialize))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    pub struct Concept {
+        /// Source-stated concept identifier.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub id: Option<Curie>,
+        /// Original concept label.
+        pub label: Text,
+    }
 }
-/// Provenance for one source record.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-pub struct Attribution {
-    /// Source approval date.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub approved: Option<PartialDate>,
-    /// Source publication date.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub published: Option<PartialDate>,
-    /// Source responsible for the claim.
-    pub source: Text,
-    /// Native assertion record.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub record: Option<Text>,
-    /// Record version.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub version: Option<Text>,
-    /// Dataset release.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub release: Option<Text>,
-    /// Source submitter or panel.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub submitter: Option<Text>,
-    /// Source evaluation date.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    pub evaluated: Option<PartialDate>,
-    /// Source record link.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Option::is_none")
-    )]
-    #[cfg_attr(feature = "schema", schemars(extend("format" = "uri")))]
-    pub url: Option<Text>,
+crate::serde_object::object_record! {
+    /// Provenance for one source record.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(Serialize))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    pub struct Attribution {
+        /// Source approval date.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub approved: Option<PartialDate>,
+        /// Source publication date.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub published: Option<PartialDate>,
+        /// Source responsible for the claim.
+        pub source: Text,
+        /// Native assertion record.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub record: Option<Text>,
+        /// Record version.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub version: Option<Text>,
+        /// Dataset release.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub release: Option<Text>,
+        /// Source submitter or panel.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub submitter: Option<Text>,
+        /// Source evaluation date.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        pub evaluated: Option<PartialDate>,
+        /// Source record link.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Option::is_none")
+        )]
+        #[cfg_attr(feature = "schema", schemars(extend("format" = "uri")))]
+        pub url: Option<Text>,
+    }
 }
 crate::wire_enum! {
     /// Domain of a source claim.

@@ -200,16 +200,18 @@ impl<'de> serde::Deserialize<'de> for Base {
     }
 }
 
-/// An interbase interval on one versioned sequence accession.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-pub struct SequenceLocation {
-    /// Versioned source sequence, without an inferred genome build.
-    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_sequence"))]
-    pub sequence: Accession,
-    /// Zero-based half-open bounds.
-    pub span: Span0,
+crate::serde_object::object_record! {
+    /// An interbase interval on one versioned sequence accession.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(serde::Serialize))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    pub struct SequenceLocation {
+        /// Versioned source sequence, without an inferred genome build.
+        #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_sequence"))]
+        pub sequence: Accession,
+        /// Zero-based half-open bounds.
+        pub span: Span0,
+    }
 }
 
 #[cfg(feature = "serde")]

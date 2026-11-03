@@ -35,15 +35,17 @@ impl From<Fraction> for f64 {
     }
 }
 
-/// A source number with its explicitly stated unit; missing units stay absent.
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-#[cfg_attr(feature = "schema", schemars(rename = "WithUnit_{V}_{U}"))]
-pub struct WithUnit<V, U = crate::Text> {
-    /// Unchanged numeric source value.
-    pub value: V,
-    /// Publisher unit or code, without conversion or inference.
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
-    pub unit: Option<U>,
+crate::serde_object::object_record! {
+    /// A source number with its explicitly stated unit; missing units stay absent.
+    #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(Serialize))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    #[cfg_attr(feature = "schema", schemars(rename = "WithUnit_{V}_{U}"))]
+    pub struct WithUnit<V, U = crate::Text> {
+        /// Unchanged numeric source value.
+        pub value: V,
+        /// Publisher unit or code, without conversion or inference.
+        #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+        pub unit: Option<U>,
+    }
 }

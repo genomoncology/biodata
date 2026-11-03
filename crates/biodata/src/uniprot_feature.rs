@@ -157,35 +157,37 @@ impl std::fmt::Display for AminoAcidsError {
 }
 impl std::error::Error for AminoAcidsError {}
 
-/// One source feature with its exact protein context.
-#[derive(Clone, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-pub struct UniProtFeature {
-    /// Protein sequence declared for this feature.
-    pub protein: UniProtIsoform,
-    /// Source location, including uncertain bounds.
-    pub span: UncertainSpan0,
-    /// Publisher feature-type term.
-    pub kind: Term,
-    /// Publisher description.
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
-    pub description: Option<crate::Text>,
-    /// Publisher feature identifier.
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
-    pub id: Option<crate::Text>,
-    /// Source-stated original residues.
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
-    pub original: Option<AminoAcids>,
-    /// Source-stated alternative residues in order.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Vec::is_empty")
-    )]
-    pub alternative: Vec<AminoAcids>,
-    /// Publisher evidence references.
-    #[cfg_attr(
-        feature = "serde",
-        serde(default, skip_serializing_if = "Vec::is_empty")
-    )]
-    pub evidence: Vec<crate::Text>,
+crate::serde_object::object_record! {
+    /// One source feature with its exact protein context.
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(serde::Serialize))]
+    pub struct UniProtFeature {
+        /// Protein sequence declared for this feature.
+        pub protein: UniProtIsoform,
+        /// Source location, including uncertain bounds.
+        pub span: UncertainSpan0,
+        /// Publisher feature-type term.
+        pub kind: Term,
+        /// Publisher description.
+        #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+        pub description: Option<crate::Text>,
+        /// Publisher feature identifier.
+        #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+        pub id: Option<crate::Text>,
+        /// Source-stated original residues.
+        #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+        pub original: Option<AminoAcids>,
+        /// Source-stated alternative residues in order.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Vec::is_empty")
+        )]
+        pub alternative: Vec<AminoAcids>,
+        /// Publisher evidence references.
+        #[cfg_attr(
+            feature = "serde",
+            serde(default, skip_serializing_if = "Vec::is_empty")
+        )]
+        pub evidence: Vec<crate::Text>,
+    }
 }

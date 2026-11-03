@@ -84,15 +84,17 @@ impl UncertainSpan0 {
     }
 }
 
-/// A partial span on its source sequence accession.
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
-pub struct UncertainLocation {
-    /// Versioned source sequence.
-    pub sequence: Accession,
-    /// Zero-based interbase span.
-    pub span: UncertainSpan0,
+crate::serde_object::object_record! {
+    /// A partial span on its source sequence accession.
+    #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+    #[cfg_attr(feature = "serde", derive(serde::Serialize))]
+    #[cfg_attr(feature = "serde", serde(deny_unknown_fields))]
+    pub struct UncertainLocation {
+        /// Versioned source sequence.
+        pub sequence: Accession,
+        /// Zero-based interbase span.
+        pub span: UncertainSpan0,
+    }
 }
 
 #[cfg(feature = "serde")]

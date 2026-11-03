@@ -1,6 +1,6 @@
 use crate::{Text, text_value};
 #[cfg(feature = "serde")]
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 /// A checked human Reactome stable pathway identifier.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub struct ReactomeId(Box<str>);
@@ -40,16 +40,18 @@ text_value!(
     "^R-HSA-[1-9][0-9]*$",
     "A checked human Reactome stable pathway identifier."
 );
-/// A pathway reference without membership or hierarchy data.
-#[derive(Clone, Debug, PartialEq)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
-pub struct PathwayRef {
-    /// Human stable identifier.
-    pub id: ReactomeId,
-    /// Whole source pathway name.
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
-    pub name: Option<Text>,
+crate::serde_object::object_record! {
+    /// A pathway reference without membership or hierarchy data.
+    #[derive(Clone, Debug, PartialEq)]
+    #[cfg_attr(feature = "serde", derive(Serialize))]
+    #[cfg_attr(feature = "schema", derive(schemars::JsonSchema))]
+    pub struct PathwayRef {
+        /// Human stable identifier.
+        pub id: ReactomeId,
+        /// Whole source pathway name.
+        #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+        pub name: Option<Text>,
+    }
 }
 
 /// A checked WikiPathways identity without its revision.

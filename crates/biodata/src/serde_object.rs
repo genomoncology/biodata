@@ -1,4 +1,4 @@
-//! Keep validated object boundaries map-only while retaining derived field checks.
+//! Keep record boundaries map-only while retaining derived field checks.
 #[cfg(feature = "serde")]
 use std::{fmt, marker::PhantomData};
 
@@ -65,3 +65,30 @@ macro_rules! object_enum {
     };
 }
 pub(crate) use object_enum;
+
+// Declare fields once for the public value and its derived reader. All serde
+// attributes apply to both, and non-human-readable readers retain their layout.
+macro_rules! object_record {
+    ($(#[$meta:meta])* $visibility:vis struct $name:ident
+     $(<$($generic:ident $(= $default:ty)?),*>)? {
+        $($(#[$field_meta:meta])* $field_visibility:vis $field:ident: $ty:ty),* $(,)?
+    }) => {
+        $(#[$meta])* $visibility struct $name $(<$($generic $(= $default)?),*>)? {
+            $($(#[$field_meta])* $field_visibility $field: $ty),*
+        }
+        #[cfg(feature = "serde")]
+        impl<'de $(, $($generic: serde::Deserialize<'de>),*)?> serde::Deserialize<'de>
+            for $name $(<$($generic),*>)? {
+            fn deserialize<D: serde::Deserializer<'de>>(deserializer: D) -> Result<Self, D::Error> {
+                $(#[$meta])*
+                #[derive(serde::Deserialize)]
+                struct $name $(<$($generic $(= $default)?),*>)? {
+                    $($(#[$field_meta])* $field_visibility $field: $ty),*
+                }
+                let fields = crate::serde_object::deserialize::<$name $(<$($generic),*>)?, D>(deserializer)?;
+                Ok(Self { $($field: fields.$field),* })
+            }
+        }
+    };
+}
+pub(crate) use object_record;

@@ -1,6 +1,7 @@
 # 0019 — plain-records-refuse-positional-arrays
 
-Status: OPEN.
+Status: COMPLETE.
+Landed: e79f36c13a0214cf2039ef5d2a722e4db977b834
 
 Milestone: 1
 
