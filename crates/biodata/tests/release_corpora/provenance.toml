@@ -1,0 +1,6 @@
+license = "CC0-1.0"
+origin = "Reviewed syntax refusals from CIViC monthly release 01-Nov-2026; https://docs.civicdb.org/en/latest/about/faq.html#how-is-civic-licensed"
+
+[[file]]
+path = "reviewed-differences.tsv"
+sha256 = "53239780c9cc521f276f98409b0ac2813e584da5c983480d175cccc3bc7ac597"

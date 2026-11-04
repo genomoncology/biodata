@@ -1,0 +1,37 @@
+# CIViC monthly release selected from https://civicdb.org/api/graphql dataReleases.
+[[source]]
+name = "civic"
+release = "01-Nov-2026"
+license = "CC0-1.0"
+license_url = "https://docs.civicdb.org/en/latest/about/faq.html#how-is-civic-licensed"
+release_url = "https://civicdb.org/releases"
+
+[[source.file]]
+kind = "variants"
+name = "01-Nov-2026-VariantSummaries.tsv"
+url = "https://civicdb.org/downloads/01-Nov-2026/01-Nov-2026-VariantSummaries.tsv"
+sha256 = "5b52465b9f6b4c4bc2083f03ed606319e0c1e0bb67cc93383627f6598c76051c"
+
+[[source.file]]
+kind = "profiles"
+name = "01-Nov-2026-MolecularProfileSummaries.tsv"
+url = "https://civicdb.org/downloads/01-Nov-2026/01-Nov-2026-MolecularProfileSummaries.tsv"
+sha256 = "8487655f3cad586e8de0cc127d01648c7f4b136566cbf389f6d9c122ad041e95"
+
+[[source.file]]
+kind = "evidence"
+name = "01-Nov-2026-AcceptedAndSubmittedClinicalEvidenceSummaries.tsv"
+url = "https://civicdb.org/downloads/01-Nov-2026/01-Nov-2026-AcceptedAndSubmittedClinicalEvidenceSummaries.tsv"
+sha256 = "0b475a022a41bf842729b4b5802b0c4bafe483d126205ce337a53fc8152616bb"
+
+[[source.file]]
+kind = "assertions"
+name = "01-Nov-2026-AcceptedAssertionSummaries.tsv"
+url = "https://civicdb.org/downloads/01-Nov-2026/01-Nov-2026-AcceptedAssertionSummaries.tsv"
+sha256 = "ed1e000cdc99b872497b31b37ba48d1d844f5c13af790dc5118ff16e9a97f5f6"
+
+[[source.file]]
+kind = "features"
+name = "01-Nov-2026-FeatureSummaries.tsv"
+url = "https://civicdb.org/downloads/01-Nov-2026/01-Nov-2026-FeatureSummaries.tsv"
+sha256 = "a340fc3d4792a00c8801ffb060bf8b9934d9da81b8d299647f01877a70389bd8"

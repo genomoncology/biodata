@@ -49,3 +49,13 @@ check-transcript-schemas:
 check-subject-schema:
 	$(PYTHON) -m unittest discover -s scripts -p 'test_schema_choices.py'
 	cargo test -p biodata --features schema --locked --test subject_schema --test source_shapes
+
+BIODATA_CORPUS_ROOT ?= $(HOME)/workspace/data/biodata-corpora
+export BIODATA_CORPUS_ROOT
+
+.PHONY: fetch-corpora release-suite
+fetch-corpora:
+	$(PYTHON) scripts/fetch-corpora.py
+
+release-suite:
+	$(PYTHON) scripts/release-suite.py
