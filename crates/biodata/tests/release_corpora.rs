@@ -1,5 +1,8 @@
 //! Offline release-sized CIViC inputs, deliberately excluded from the routine gate.
-#![expect(clippy::disallowed_methods, reason = "release tests read explicitly configured corpus files")]
+#![expect(
+    clippy::disallowed_methods,
+    reason = "release tests read explicitly configured corpus files"
+)]
 
 #[path = "release_corpora/civic.rs"]
 mod civic;

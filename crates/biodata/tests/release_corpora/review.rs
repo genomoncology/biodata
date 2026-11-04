@@ -25,25 +25,52 @@ impl Review {
             let [corpus, number, id, kind, input, result, reason, rule] = fields.as_slice() else {
                 return Err("reviewed difference must have eight columns".into());
             };
-            if *corpus != "civic-01-Nov-2026" || reason.is_empty() || !rule.starts_with("https://") {
+            if *corpus != "civic-01-Nov-2026" || reason.is_empty() || !rule.starts_with("https://")
+            {
                 return Err(format!("invalid reviewed difference: {row}").into());
             }
-            let key = (number.to_string(), id.to_string(), kind.to_string(), input.to_string());
+            let key = (
+                number.to_string(),
+                id.to_string(),
+                kind.to_string(),
+                input.to_string(),
+            );
             if rows.insert(key, result.to_string()).is_some() {
                 return Err("duplicate reviewed difference".into());
             }
         }
         let observations = std::env::var_os("BIODATA_RELEASE_OBSERVATIONS")
-            .map(std::fs::File::create).transpose()?;
-        Ok(Self { rows, seen: BTreeSet::new(), failures: Vec::new(), observations })
+            .map(std::fs::File::create)
+            .transpose()?;
+        Ok(Self {
+            rows,
+            seen: BTreeSet::new(),
+            failures: Vec::new(),
+            observations,
+        })
     }
 
-    pub fn check(&mut self, row: usize, id: &str, kind: &str, input: &str, result: &str) -> Result<bool, Box<dyn Error>> {
-        let key = (row.to_string(), id.to_owned(), kind.to_owned(), input.to_owned());
+    pub fn check(
+        &mut self,
+        row: usize,
+        id: &str,
+        kind: &str,
+        input: &str,
+        result: &str,
+    ) -> Result<bool, Box<dyn Error>> {
+        let key = (
+            row.to_string(),
+            id.to_owned(),
+            kind.to_owned(),
+            input.to_owned(),
+        );
         if let Some(file) = &mut self.observations {
             // Only refusal observations are retained; stdout stays bounded.
             if result != "parsed" {
-                writeln!(file, "civic-01-Nov-2026\t{row}\t{id}\t{kind}\t{input}\t{result}")?;
+                writeln!(
+                    file,
+                    "civic-01-Nov-2026\t{row}\t{id}\t{kind}\t{input}\t{result}"
+                )?;
             }
         }
         match self.rows.get(&key) {
@@ -53,18 +80,33 @@ impl Review {
             }
             _ if result == "parsed" && !self.rows.contains_key(&key) => Ok(false),
             _ => {
-                self.failures.push(format!("row {row} {id} {kind} {input}: {result}"));
+                self.failures
+                    .push(format!("row {row} {id} {kind} {input}: {result}"));
                 Ok(false)
             }
         }
     }
 
     pub fn finish(self) -> Result<(), Box<dyn Error>> {
-        let stale: Vec<_> = self.rows.keys().filter(|key| !self.seen.contains(*key)).collect();
+        let stale: Vec<_> = self
+            .rows
+            .keys()
+            .filter(|key| !self.seen.contains(*key))
+            .collect();
         if !self.failures.is_empty() || !stale.is_empty() {
-            return Err(format!("{} unreviewed or changed refusals: {}; {} stale reviews: {:?}",
-                self.failures.len(), self.failures.iter().take(10).cloned().collect::<Vec<_>>().join("; "),
-                stale.len(), stale.iter().take(3).collect::<Vec<_>>()).into());
+            return Err(format!(
+                "{} unreviewed or changed refusals: {}; {} stale reviews: {:?}",
+                self.failures.len(),
+                self.failures
+                    .iter()
+                    .take(10)
+                    .cloned()
+                    .collect::<Vec<_>>()
+                    .join("; "),
+                stale.len(),
+                stale.iter().take(3).collect::<Vec<_>>()
+            )
+            .into());
         }
         Ok(())
     }
