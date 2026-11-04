@@ -53,9 +53,12 @@ check-subject-schema:
 BIODATA_CORPUS_ROOT ?= $(HOME)/workspace/data/biodata-corpora
 export BIODATA_CORPUS_ROOT
 
-.PHONY: fetch-corpora release-suite
+.PHONY: fetch-corpora release-suite check-release-suite
 fetch-corpora:
 	$(PYTHON) scripts/fetch-corpora.py
 
 release-suite:
 	$(PYTHON) scripts/release-suite.py
+
+check-release-suite:
+	$(PYTHON) scripts/check-release-suite.py

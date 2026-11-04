@@ -5,7 +5,7 @@ import os
 import subprocess
 import tempfile
 
-from corpora import REPO, corpus_root
+from corpora import REPO, corpus_root, sources
 
 
 def run(*arguments, environment=None):
@@ -39,6 +39,19 @@ def prove(environment):
     if cached.returncode or "0 downloaded" not in cached.stdout:
         raise SystemExit("cached fetch downloaded or failed: " + cached.stdout)
     print(cached.stdout, end="", flush=True)
+    source = sources()[0]
+    path = Path(environment["BIODATA_CORPUS_ROOT"]) / source["name"] / source["release"] / source["file"][0]["name"]
+    original = path.read_bytes()
+    try:
+        path.write_bytes(b"corrupt cache")
+        corrupt = run("fetch-corpora", environment=environment)
+        if not corrupt.returncode or "cached checksum mismatch" not in corrupt.stdout:
+            raise SystemExit("fetch accepted a corrupt cached input: " + corrupt.stdout)
+        if path.read_bytes() != b"corrupt cache":
+            raise SystemExit("fetch replaced a corrupt cached input")
+    finally:
+        path.write_bytes(original)
+    print("corrupt cached input refused without replacement", flush=True)
     # Routine tests must not read a release data root, even when one is configured.
     gate = run("gate", environment=dict(environment, BIODATA_CORPUS_ROOT="/dev/null/not-a-corpus"))
     if gate.returncode:
