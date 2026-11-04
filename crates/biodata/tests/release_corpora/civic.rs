@@ -269,7 +269,7 @@ fn clinical(rows: &[Row], kind: &str, review: &mut Review) -> Result<(), Box<dyn
     Ok(())
 }
 
-pub fn run() -> Result<(), Box<dyn Error>> {
+pub(super) fn run() -> Result<(), Box<dyn Error>> {
     let path = std::env::var("BIODATA_RELEASE_ROWS")?;
     let release: Release = serde_json::from_reader(std::fs::File::open(path)?)?;
     let mut review = Review::load()?;

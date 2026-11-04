@@ -5,7 +5,7 @@ use std::io::Write;
 
 type Key = (String, String, String, String);
 
-pub struct Review {
+pub(super) struct Review {
     rows: BTreeMap<Key, String>,
     seen: BTreeSet<Key>,
     failures: Vec<String>,
@@ -13,7 +13,7 @@ pub struct Review {
 }
 
 impl Review {
-    pub fn load() -> Result<Self, Box<dyn Error>> {
+    pub(super) fn load() -> Result<Self, Box<dyn Error>> {
         let path = std::env::var("BIODATA_REVIEWED_ROWS").ok();
         let source = match path {
             Some(path) => std::fs::read_to_string(path)?,
@@ -50,7 +50,7 @@ impl Review {
         })
     }
 
-    pub fn check(
+    pub(super) fn check(
         &mut self,
         row: usize,
         id: &str,
@@ -87,7 +87,7 @@ impl Review {
         }
     }
 
-    pub fn finish(self) -> Result<(), Box<dyn Error>> {
+    pub(super) fn finish(self) -> Result<(), Box<dyn Error>> {
         let stale: Vec<_> = self
             .rows
             .keys()
