@@ -5,6 +5,10 @@ use std::io::Write;
 
 type Key = (String, String, String, String);
 
+#[expect(
+    clippy::disallowed_types,
+    reason = "release observations are written to the configured external file"
+)]
 pub(super) struct Review {
     rows: BTreeMap<Key, String>,
     seen: BTreeSet<Key>,

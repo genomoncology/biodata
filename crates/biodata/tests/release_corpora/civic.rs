@@ -1,7 +1,8 @@
 //! Preserve source-native identities and check every CIViC release entity and notation.
 use super::review::Review;
 use biodata::{
-    Concept, Curie, Doi, HgvsText, Outcome, Pmid, SourceGeneRef, Text, VariantRef, hgvs,
+    Concept, Curie, DiseaseAssociationReference, Doi, HgvsText, Outcome, Pmid, SourceGeneRef, Text,
+    VariantRef, hgvs,
 };
 use serde::Deserialize;
 use std::collections::{BTreeMap, BTreeSet};
@@ -190,20 +191,29 @@ fn concept(label: &str, id: Option<&str>) -> Check<Concept> {
         label: text(label)?,
     })
 }
-fn citation(row: &Row) -> Check<()> {
-    text(field(row, "citation")?)?;
+fn citation(row: &Row) -> Check<DiseaseAssociationReference> {
     let id = field(row, "citation_id")?;
-    match field(row, "source_type")? {
+    let source = field(row, "source_type")?;
+    match source {
         "PubMed" => {
             parse::<Pmid>(id)?;
         }
         "ASCO" | "ASH" => {
-            parse::<Doi>(id)?;
+            // Some source records carry an abstract ID rather than a DOI.
+            if id.starts_with("10.") {
+                parse::<Doi>(id)?;
+            }
         }
         other => return Err(format!("unsupported:civic.citation.source:{other}")),
     }
-    Ok(())
+    let label = field(row, "citation")?;
+    Ok(DiseaseAssociationReference {
+        id: parse(&format!("{source}:{id}"))?,
+        label: (!label.is_empty()).then(|| text(label)).transpose()?,
+        url: None,
+    })
 }
+
 fn clinical(rows: &[Row], kind: &str, review: &mut Review) -> Result<(), Box<dyn Error>> {
     let mut counts = Counts::default();
     for (index, row) in rows.iter().enumerate() {
