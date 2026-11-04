@@ -31,7 +31,7 @@ def main():
             projection.write_text(json.dumps(rows))
             environment = dict(os.environ, BIODATA_RELEASE_ROWS=str(projection))
             return subprocess.run([
-                "cargo", "test", "-p", "biodata", "--all-features", "--locked",
+                "cargo", "test", "-p", "biodata", "--all-features", "--locked", "--offline",
                 "--test", "release_corpora", "--", "--ignored", "--nocapture",
             ], cwd=REPO, env=environment, check=False).returncode
     except (OSError, ValueError) as error:

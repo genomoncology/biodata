@@ -1,8 +1,7 @@
 license = "CC0-1.0"
 origin = "Reviewed syntax refusals from CIViC monthly release 01-Nov-2026; https://docs.civicdb.org/en/latest/about/faq.html#how-is-civic-licensed"
+review_scope = "Each row accepts the observed refusal of this exact source spelling, not a clinical judgment or a claim that the source variant is invalid. No spelling is repaired or normalized. Coverage gaps remain separate parser work."
 
 [[file]]
 path = "reviewed-differences.tsv"
 sha256 = "8d47c81f058d3adf2255c9ecb237c30bfc1f0ca00b35e9d99fd86d6a78aa1072"
-
-review_scope = "Each row accepts the observed refusal of this exact source spelling, not a clinical judgment or a claim that the source variant is invalid. No spelling is repaired or normalized. Coverage gaps remain separate parser work."

@@ -11,6 +11,7 @@ use std::str::FromStr;
 
 type Row = BTreeMap<String, String>;
 type Check<T> = Result<T, String>;
+type NativeVariants = (BTreeMap<String, VariantRef>, BTreeMap<String, usize>);
 
 #[derive(Deserialize)]
 struct Release {
@@ -109,10 +110,7 @@ fn genes(row: &Row) -> Check<Vec<SourceGeneRef>> {
         .collect()
 }
 
-fn variants(
-    rows: &[Row],
-    review: &mut Review,
-) -> Result<(BTreeMap<String, VariantRef>, BTreeMap<String, usize>), Box<dyn Error>> {
+fn variants(rows: &[Row], review: &mut Review) -> Result<NativeVariants, Box<dyn Error>> {
     let mut values = BTreeMap::new();
     let mut gene_counts = BTreeMap::<String, usize>::new();
     let mut counts = Counts::default();
