@@ -9,7 +9,7 @@ Date: 2026-11-04. This is a source-to-value inventory, not a clinical recommenda
 - **Study:** Dolin et al., [JAMIA Open 9(2), ooag022](https://doi.org/10.1093/jamiaopen/ooag022), published 2026-03-06; [full text and Table 2](https://pmc.ncbi.nlm.nih.gov/articles/PMC12963594/#ooag022-T2), CC BY 4.0. Only object names and counts are used below; article prose is not reproduced.
 - **Code:** [BioData `98acab1e4a90fcbe7670df1930d778ca7a9c05d3`](https://github.com/genomoncology/biodata/tree/98acab1e4a90fcbe7670df1930d778ca7a9c05d3/crates/biodata/src). The author branch starts from `cc9c362e749cbaeff1322f97ab1829c99331d85e`; intervening changes concern planning only. All type judgments below refer to the named product commit.
 
-The inventory includes coded fields and measured values in all M index files and all G example resources. It recurses through `Bundle.entry.resource`, `contained` and operation `Parameters`, and excludes conformance resources (StructureDefinition, ValueSet, CodeSystem, ConceptMap, OperationDefinition and ImplementationGuide). The archive includes these despite the download's name. Repeated instances use one row per resource-relative path and value kind. `[]` means every array member; component codes and extension URLs disambiguate meanings. Counts include duplicate presentations in bundles and standalone files; they do not count patients or unique clinical observations. The linked JSON and pointer give one concrete witness for every row. Resource IDs, narrative, attachment payloads, names, addresses and free prose are not coded or measured values. Time and linkage needs remain in the gap list because the studied objects require them.
+The inventory includes coded fields and measured values in all M index files and all G example resources. It recurses through `Bundle.entry.resource`, `contained` and operation `Parameters`, and excludes conformance resources (StructureDefinition, ValueSet, CodeSystem, ConceptMap, OperationDefinition and ImplementationGuide). The archive includes these despite the download's name. Repeated instances use one row per resource-relative path and value kind. `[]` means every array member; component codes and extension URLs disambiguate meanings. Counts include duplicate presentations in bundles and standalone files; they do not count patients or unique clinical observations. The linked JSON and pointer give one concrete witness for every row. Resource IDs, narrative prose, attachment payloads, names, addresses and free prose are not coded or measured values. Time and linkage needs remain in the gap list because the studied objects require them.
 
 Archive SHA-256, fetched 2026-11-04: M `c5497906283cb7697336f80e7e79f2d4c451217cb8cc7d0397f164a5cfc74b9f`; G `bfa73f5e0155f619b3b596708948dc2c9f2c94ae36b9842012be2a6945773447`.
 
@@ -271,3 +271,84 @@ Each coding row includes the entire Coding or CodeableConcept value, including a
 | E231 | `Task.status` | code | G; 9 | [Bundle-bundle-cgexample-withGrouping](https://hl7.org/fhir/uv/genomics-reporting/STU3/Bundle-bundle-cgexample-withGrouping.json) `/entry/17/resource/status` | `Concept`/`Term` partial; G1 |
 | E232 | `Task.text.status` | code | G; 9 | [Bundle-bundle-cgexample-withGrouping](https://hl7.org/fhir/uv/genomics-reporting/STU3/Bundle-bundle-cgexample-withGrouping.json) `/entry/17/resource/text/status` | `Concept`/`Term` partial; G1 |
 
+## Typed genomic payloads within those elements
+
+The inventory maps the complete FHIR field, not only its payload. These existing leaves give partial support. They apply only when the supplied spelling satisfies the type's declared grammar, and do not imply a terminology conversion or clinical interpretation.
+
+| Element selector | BioData 1.0 value | Boundary |
+| --- | --- | --- |
+| Observation component `48018-6` | `HgncId`, `GeneSymbol`, `SourceGeneRef` | Retain source ID and symbol independently; all Coding metadata still needs G1. |
+| Components `51958-7`, `48013-7` | `Accession`, `TranscriptAccession` | Transcript/genomic reference accession; retain unsupported authority and coding through G1. |
+| Components `48004-6`, `48005-3`, `81290-9` | `hgvs::Hgvs`, `HgvsText`, `Expression` | Coding, protein and genomic HGVS payloads respectively. Grammar validation is not normalization; preserve refusals. |
+| Component `81291-7` | `iscn::Karyotype` | Supported ISCN grammar only; a refused source string is not a typed karyotype. |
+| Component `81252-9` | `VariantId`, `Expression`, `SourceText` | Follow actual identifier/expression syntax. A free label remains text. |
+| Components `69547-8`, `69551-0` | `Sequence`, `Allele`, `SourceText` | Source reference/alternate leaves only; validate alphabet and empty-allele convention. |
+| Components `62374-4`, `92822-6` | `Build`; consumer coordinate convention | Supported build spelling only. The coordinate code is G1; do not assume zero-based coordinates. |
+| Components `81254-5`, `81302-2` | `Position1`, `Span0`, `UncertainSpan0`, `UncertainLocation` | Require the source reference and coordinate basis. General Range remains G3. |
+| Component `82155-3` | `CopyNumberCount`, `CopyNumberChange`, `CopyChange` | Integer counts or matching EFO relative changes only; do not round fractional measurements. |
+| Component `81258-6` | `Fraction`, `WithUnit` | Percent and fraction have different scales; preserve G2 before any explicit conversion. |
+| Components `molecular-consequence`, `feature-consequence` | `SoCode`, `SoTerm`, `Consequence`, `TranscriptConsequence` | Supported SO terms only; retain unknown effects and complete coding through G1. |
+| Components `53037-8`, `93044-6` | `Term`, `Coding`, matching framework enum | A LOINC answer code is not automatically an equivalent AMP/ASCO/CAP or ACMG classification. G1 remains. |
+| Components `51963-7`, `81259-4` | `Concept`, `DrugId`, `MondoId`, `NcitId`, `NctId` as applicable | Matching source authority and grammar only; RxNorm/SNOMED and multi-coding details remain G1. |
+| PGx haplotype/genotype result | `alteration::Star`, `PgxDiplotypeExpression`, `ClinPgxAccession` as applicable | Not a general observed-haplotype model; HLA/phase remain G7. |
+| Observation biomarker Quantity | `WithUnit<FiniteNumber, Text>`; marker-specific `alteration::Signature` only when grammar fits | Measurement is G2; categories are G1. No clinical threshold inference. |
+
+Definition witnesses: [public exports](https://github.com/genomoncology/biodata/blob/98acab1/crates/biodata/src/lib.rs), [HGVS](https://github.com/genomoncology/biodata/tree/98acab1/crates/biodata/src/hgvs), [expressions](https://github.com/genomoncology/biodata/blob/98acab1/crates/biodata/src/variant/notation.rs), [copy number](https://github.com/genomoncology/biodata/blob/98acab1/crates/biodata/src/copy_number.rs), [gene reference](https://github.com/genomoncology/biodata/blob/98acab1/crates/biodata/src/gene/reference.rs).
+
+## The study's 47 object occurrences
+
+[Table 2](https://pmc.ncbi.nlm.nih.gov/articles/PMC12963594/#ooag022-T2) counts occurrences, not 47 distinct value types. Its count column sums to 47. Its HLA parenthesis lists A×2, B×2, C×3 while that row's count says six. The six published [HLA examples](https://hl7.org/fhir/uv/genomics-reporting/STU3/artifacts.html) are A1/A2, B1/B2 and C1/C2. This inventory retains the stated six and names those examples. It does not invent a seventh object or change the denominator. This is a source inconsistency, not a biological ruling.
+
+**Strict lossless whole-object coverage is 0/47 under the definition below. Whether that is the intended comparison for a small-values library is an open PM question; this inventory does not claim the 41/47 target is met.** BioData has useful typed leaves, but no lossless clinical resource envelope retaining all coding, measurement, time, subject, specimen, relationship and provenance fields. The study's 41 measures FHIR encoding, not BioData support. Counting an HGVS leaf as a complete observed Variant, or Text as a Patient, would inflate the comparison. Consumers must assemble records from shared values and report their losses; this finding does not propose clinical records in BioData.
+
+| ID | Study occurrence | Existing leaf support | Remaining gap |
+| --- | --- | --- | --- |
+| S01 | Report | Identifier, Attribution, PartialDate, Text | G1, G4–G6; consumer report |
+| S02 | Patient | Identifier, PartialDate, Text | G1, G4–G6; consumer patient |
+| S03 | Normal specimen | Identifier, Text | G1, G2, G4–G6; consumer specimen |
+| S04 | Tumor specimen | Identifier, Text | G1, G2, G4–G6; consumer specimen |
+| S05 | Order | Identifier, Text | G1, G4–G6; consumer record |
+| S06 | Interpreter | Identifier, Text | G1, G4–G6; consumer record |
+| S07 | Performer | Identifier, Text | G1, G4–G6; consumer record |
+| S08 | EGFR variant | SourceGeneRef; HGVS/Expression where supplied | G1–G5; observed specimen, origin and phase context |
+| S09 | ROS1 fusion variant | SourceGeneRef; HGVS/Expression where supplied | G1–G5; observed specimen, origin and phase context |
+| S10 | STAG2 variant | SourceGeneRef; HGVS/Expression where supplied | G1–G5; observed specimen, origin and phase context |
+| S11 | ATR variant | SourceGeneRef; HGVS/Expression where supplied | G1–G5; observed specimen, origin and phase context |
+| S12 | NTHL1 variant | SourceGeneRef; HGVS/Expression where supplied | G1–G5; observed specimen, origin and phase context |
+| S13 | MSH2 variant | SourceGeneRef; HGVS/Expression where supplied | G1–G5; observed specimen, origin and phase context |
+| S14 | ZFHX3 variant | SourceGeneRef; HGVS/Expression where supplied | G1–G5; observed specimen, origin and phase context |
+| S15 | NOTCH1 variant | SourceGeneRef; HGVS/Expression where supplied | G1–G5; observed specimen, origin and phase context |
+| S16 | EGFR diagnostic implication | Term, matching Coding, Statement leaves | G1, G4, G5; retain source classification framework |
+| S17 | ROS1 diagnostic implication | Term, matching Coding, Statement leaves | G1, G4, G5; retain source classification framework |
+| S18 | STAG2 diagnostic implication | Term, matching Coding, Statement leaves | G1, G4, G5; retain source classification framework |
+| S19 | ATR diagnostic implication | Term, matching Coding, Statement leaves | G1, G4, G5; retain source classification framework |
+| S20 | NTHL1 diagnostic implication | Term, matching Coding, Statement leaves | G1, G4, G5; retain source classification framework |
+| S21 | MSH2 diagnostic implication | Term, matching Coding, Statement leaves | G1, G4, G5; retain source classification framework |
+| S22 | ZFHX3 diagnostic implication | Term, matching Coding, Statement leaves | G1, G4, G5; retain source classification framework |
+| S23 | NOTCH1 diagnostic implication | Term, matching Coding, Statement leaves | G1, G4, G5; retain source classification framework |
+| S24 | EGFR–Drug1 implication | Concept; matching DrugId/NctId; Term | G1, G4, G5; retain attributed assertion |
+| S25 | EGFR–Drug2 implication | Concept; matching DrugId/NctId; Term | G1, G4, G5; retain attributed assertion |
+| S26 | ROS1–drug implication | Concept; matching DrugId/NctId; Term | G1, G4, G5; retain attributed assertion |
+| S27 | ROS1–trial implication | Concept; matching DrugId/NctId; Term | G1, G4, G5; retain attributed assertion |
+| S28 | TMB–drug implication | Concept; matching DrugId/NctId; Term | G1, G4, G5; retain attributed assertion |
+| S29 | ATR consequence | Consequence, TranscriptConsequence, SO/HGVS where supported | G1, G5; retain unknown effects |
+| S30 | NOTCH1 consequence | Consequence, TranscriptConsequence, SO/HGVS where supported | G1, G5; retain unknown effects |
+| S31 | NTHL1 consequence | Consequence, TranscriptConsequence, SO/HGVS where supported | G1, G5; retain unknown effects |
+| S32 | ROS1 consequence | Consequence, TranscriptConsequence, SO/HGVS where supported | G1, G5; retain unknown effects |
+| S33 | ZFHX3 consequence | Consequence, TranscriptConsequence, SO/HGVS where supported | G1, G5; retain unknown effects |
+| S34 | TMB biomarker | WithUnit/FiniteNumber or Term; applicable marker grammar | G1–G3, G5; no category inference |
+| S35 | MSI biomarker | WithUnit/FiniteNumber or Term; applicable marker grammar | G1–G3, G5; no category inference |
+| S36 | PD-L1 biomarker | WithUnit/FiniteNumber or Term; applicable marker grammar | G1–G3, G5; no category inference |
+| S37 | HLA-A1 | SourceText, GeneSymbol; no typed HLA leaf | G1, G5, G7 |
+| S38 | HLA-A2 | SourceText, GeneSymbol; no typed HLA leaf | G1, G5, G7 |
+| S39 | HLA-B1 | SourceText, GeneSymbol; no typed HLA leaf | G1, G5, G7 |
+| S40 | HLA-B2 | SourceText, GeneSymbol; no typed HLA leaf | G1, G5, G7 |
+| S41 | HLA-C1 | SourceText, GeneSymbol; no typed HLA leaf | G1, G5, G7 |
+| S42 | HLA-C2 | SourceText, GeneSymbol; no typed HLA leaf | G1, G5, G7 |
+| S43 | Study | Identifier, Method, gene leaves | G1–G5; consumer testing scope/protocol |
+| S44 | Tumor analysis | Identifier, Method, accession/gene leaves | G1–G5; consumer analysis/specimen links |
+| S45 | Normal analysis | Identifier, Method, accession/gene leaves | G1–G5; consumer analysis/specimen links |
+| S46 | Pertinent negative | GeneSymbol/Expression and source label | G1, G5; preserve tested scope without inference |
+| S47 | Gene expression | WithUnit/FiniteNumber, GeneSymbol | G1–G3, G5; preserve normalization/reference context |
+
+The rejected alternative treats every code as Identifier<Text> and every measurement as WithUnit. That retains some characters but drops the Coding and Quantity contracts. A different published source version, a BioData commit adding these contracts, or consumer round-trip evidence preserving them would change the findings. G1–G6 follow the existing clinical ruling. G7 and G8 are candidate needs for PM prioritization. No parser change, shared clinical record or patient-care decision is authorized here.
