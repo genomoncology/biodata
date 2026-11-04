@@ -14,7 +14,7 @@ Milestone 3 needs a checked list of the small values FHIR genomics data uses bef
 
 ## Proof
 
-- Proof: a fresh reviewer samples at least ten mapped elements and every listed gap against the published examples and BioData's source at the named commit, and finds none misfiled. The design counts how many of the 47 objects BioData holds, against the study's target of 41.
+- Proof: a fresh reviewer samples at least ten mapped elements and every listed gap against the published examples and BioData's source at the named commit, and finds none misfiled. For each of the 47 occurrences, the design counts held when BioData values keep every coded/measured payload part, partly held when they keep some, and gap when they keep none. Support must preserve coded/measured meaning through a code/system pair, quantity/unit, typed variant/gene/identifier or vocabulary value; generic text alone does not count. Resource/report envelopes stay consumer-owned and are not gaps. The study's 41/47 complete-FHIR result is a separate metric, not a BioData target. (PM rulings, 2026-11-04.)
 
 ## Starts from
 
