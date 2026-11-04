@@ -3,7 +3,7 @@
 Status: open.
 
 Kind: idea
-When: After BioMCP 1.0 is tagged
+When: When Ian restarts BioData work
 
 ## Problem
 
