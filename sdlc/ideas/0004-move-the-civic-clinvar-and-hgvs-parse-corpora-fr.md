@@ -1,6 +1,7 @@
 # Move the CIViC, ClinVar and HGVS parse corpora from the replication corpus into BioData's release suite
 
-Status: open.
+Status: closed.
+Promoted: 0020, 0021
 
 Kind: idea
 When: The merged crate lands on main
