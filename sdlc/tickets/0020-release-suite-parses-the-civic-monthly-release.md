@@ -1,6 +1,6 @@
 # 0020 — release-suite-parses-the-civic-monthly-release
 
-Status: OPEN.
+Status: WITHDRAWN. Ian set BioData idle on 2026-11-04; work in progress kept on the ticket branches for a later restart
 
 Milestone: 2
 
