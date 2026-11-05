@@ -1,9 +1,5 @@
 {
   "targetRef": "main",
-  "mailroom": {
-    "repo": "agents",
-    "name": "biodata"
-  },
   "flow": "light",
   "ticketsGate": "make gate",
   "inertPaths": [
