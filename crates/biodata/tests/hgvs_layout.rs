@@ -11,9 +11,21 @@ use std::mem::{align_of, size_of};
 #[test]
 fn hgvs_values_keep_their_size_and_alignment() {
     let measured = [
-        ("ProteinSite", size_of::<ProteinSite>(), align_of::<ProteinSite>()),
-        ("ProteinRange", size_of::<ProteinRange>(), align_of::<ProteinRange>()),
-        ("ProteinChange", size_of::<ProteinChange>(), align_of::<ProteinChange>()),
+        (
+            "ProteinSite",
+            size_of::<ProteinSite>(),
+            align_of::<ProteinSite>(),
+        ),
+        (
+            "ProteinRange",
+            size_of::<ProteinRange>(),
+            align_of::<ProteinRange>(),
+        ),
+        (
+            "ProteinChange",
+            size_of::<ProteinChange>(),
+            align_of::<ProteinChange>(),
+        ),
         ("hgvs::Change", size_of::<Change>(), align_of::<Change>()),
         ("Hgvs", size_of::<Hgvs>(), align_of::<Hgvs>()),
         (
@@ -21,16 +33,20 @@ fn hgvs_values_keep_their_size_and_alignment() {
             size_of::<AlterationChange>(),
             align_of::<AlterationChange>(),
         ),
-        ("Alteration", size_of::<Alteration>(), align_of::<Alteration>()),
+        (
+            "Alteration",
+            size_of::<Alteration>(),
+            align_of::<Alteration>(),
+        ),
     ];
     let expected = [
         ("ProteinSite", 8, 4),
         ("ProteinRange", 16, 4),
-        ("ProteinChange", 40, 8),
-        ("hgvs::Change", 0, 8),
-        ("Hgvs", 0, 8),
-        ("alteration::Change", 0, 8),
-        ("Alteration", 0, 8),
+        ("ProteinChange", 48, 8),
+        ("hgvs::Change", 96, 8),
+        ("Hgvs", 144, 8),
+        ("alteration::Change", 144, 8),
+        ("Alteration", 168, 8),
     ];
     assert_eq!(measured, expected, "measured {measured:?}");
 }

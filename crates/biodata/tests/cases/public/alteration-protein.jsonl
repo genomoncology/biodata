@@ -15,6 +15,8 @@
 {"input": "ABL1 A7del", "outcome": "parsed"}
 {"input": "ABL1 ?", "outcome": "parsed"}
 {"input": "ABL1 =", "outcome": "parsed"}
+{"input": "ABL1 A7_G8=", "outcome": "parsed"}
+{"input": "ABL1 p.Ala7_Gly8=", "outcome": "parsed", "render": "ABL1 A7_G8="}
 {"input": "ABL1 0", "outcome": "parsed"}
 {"input": "ABL1 A7_A8delinsG*", "outcome": "parsed"}
 {"input": "ABL1 A7Gfs*?", "outcome": "parsed"}

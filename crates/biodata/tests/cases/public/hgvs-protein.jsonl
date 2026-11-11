@@ -13,14 +13,14 @@
 {"input": "p.R97fs", "outcome": "parsed", "render": "p.Arg97fs"}
 {"input": "p.Met1ext-5", "outcome": "parsed"}
 {"input": "p.Ter110Glnext*17", "outcome": "parsed", "render": "p.Ter110GlnextTer17"}
-{"input": "p.Leu858=", "outcome": "parsed"}
+{"input": "p.Leu858=", "outcome": "parsed", "value": {"change": {"protein": {"same": {"residue": "Leu", "position": 858}}}}}
 {"input": "p.Met1?", "outcome": "parsed"}
 {"input": "p.Lys2_Gly3insGlnSerLys", "outcome": "parsed"}
 {"input": "p.A11del", "outcome": "parsed", "render": "p.Ala11del"}
 {"input": "p.0", "outcome": "parsed"}
 {"input": "p.B17=", "outcome": "parsed", "render": "p.Asx17="}
 {"input": "p.?", "outcome": "parsed"}
-{"input": "p.=", "outcome": "parsed"}
+{"input": "p.=", "outcome": "parsed", "value": {"change": {"protein": {"same": null}}}}
 {"input": "p.(0)", "outcome": "parsed"}
 {"input": "p.Gly5_Gly7dup", "outcome": "parsed"}
 {"input": "p.Gly5_Gly7delinsAlaSer", "outcome": "parsed"}
@@ -33,7 +33,19 @@
 {"input": "p.Gln18[23]", "outcome": "unsupported", "code": "hgvs.protein_repeat.unsupported", "span": [7, 8]}
 {"input": "p.Lys2_Gly3ins23", "outcome": "unsupported", "code": "hgvs.protein_inserted_count.unsupported", "span": [14, 16]}
 {"input": "p.Lys2_Gly3insX[23]", "outcome": "unsupported", "code": "hgvs.protein_inserted_count.unsupported", "span": [14, 16]}
-{"input": "p.Ala2_Gly3=", "outcome": "unsupported", "code": "hgvs.protein_range_equality.unsupported", "span": [11, 12]}
+{"input": "p.Ala2_Gly3=", "outcome": "parsed", "value": {"change": {"protein": {"same": {"start": {"residue": "Ala", "position": 2}, "end": {"residue": "Gly", "position": 3}}}}}}
+{"input": "p.(Ala2_Gly3=)", "outcome": "parsed", "value": {"predicted": true, "change": {"protein": {"same": {"start": {"residue": "Ala", "position": 2}, "end": {"residue": "Gly", "position": 3}}}}}}
+{"input": "p.A2_G3=", "outcome": "parsed", "render": "p.Ala2_Gly3=", "value": {"change": {"protein": {"same": {"start": {"residue": "Ala", "position": 2}, "end": {"residue": "Gly", "position": 3}}}}}}
+{"input": "p.(A2_G3=)", "outcome": "parsed", "render": "p.(Ala2_Gly3=)"}
+{"input": "NP_004324.2:p.(Ala2_Gly3=)", "outcome": "parsed"}
+{"input": "p.(Ala2=)", "outcome": "parsed", "value": {"predicted": true, "change": {"protein": {"same": {"residue": "Ala", "position": 2}}}}}
+{"input": "p.Gly3_Ala2=", "outcome": "invalid", "code": "hgvs.protein_edit.invalid", "span": [11, 12]}
+{"input": "p.Ala2_Ala2=", "outcome": "invalid", "code": "hgvs.protein_edit.invalid", "span": [11, 12]}
+{"input": "p.Ala2_Gly3=Ser", "outcome": "invalid", "code": "input.trailing.invalid", "span": [12, 15]}
+{"input": "p.Ala2_Gly3Ser", "outcome": "invalid", "code": "hgvs.protein_edit.invalid", "span": [11, 12]}
+{"input": "p.Ala2_=", "outcome": "invalid", "code": "hgvs.protein_residue.invalid", "span": [7, 8]}
+{"input": "p.Ala2_Gly=", "outcome": "invalid", "code": "hgvs.protein_position.invalid", "span": [10, 11]}
+{"input": "p.(Ala2_Gly3=", "outcome": "invalid", "code": "hgvs.protein_edit.invalid", "span": [13, 13]}
 {"input":"p.A41G","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Ala","position":41},"to":"Gly"}}}},"render":"p.Ala41Gly"}
 {"input":"p.Ala41Gly","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Ala","position":41},"to":"Gly"}}}}}
 {"input":"p.R41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Arg","position":41},"to":"Ala"}}}},"render":"p.Arg41Ala"}

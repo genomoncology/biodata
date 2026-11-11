@@ -64,7 +64,7 @@ pub fn difference(
             .end
             .saturating_sub(1)
             .min(original.len().checked_sub(1).ok_or(PeptideError::Input)?);
-        return Ok(ProteinChange::Same(Some(site(original, index)?)));
+        return Ok(ProteinChange::Same(Some(site(original, index)?.into())));
     }
     if first == 0 {
         return Ok(ProteinChange::Unknown(None));

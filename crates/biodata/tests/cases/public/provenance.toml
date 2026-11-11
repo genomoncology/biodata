@@ -23,7 +23,7 @@ sha256 = "87adb88ca67640a7c4c6a93bd4ce995d52063a89aad98bf1585d13d025bb78b4"
 
 [[file]]
 path = "alteration-protein.jsonl"
-sha256 = "4d9851e543f45a90c458828af0742adad84c95597d7f1c59f8f185f83b963921"
+sha256 = "51d7920d98c873a7cb016168cb0f25f77bc2f9431e4af525b44cdef29fe328e6"
 
 [[file]]
 path = "alteration-review-regressions.jsonl"
@@ -35,7 +35,7 @@ sha256 = "951cb126355c1cd4947ee517ae02dfdfa90bfcc85a6e2f52a6de1907cc5530b1"
 
 [[file]]
 path = "hgvs-protein.jsonl"
-sha256 = "f7d46d3d7d1536e51642b2f43dbedbb1392f627fd02a64f7a4601207999486d5"
+sha256 = "ee650587d4ffc6f27a11d196461f4efa2a2cef99be9b22df139d62f08ecec26f"
 
 [[file]]
 path = "hgvs-reference.jsonl"
