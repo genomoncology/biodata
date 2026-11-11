@@ -96,7 +96,10 @@ impl ProteinRange {
     /// The last position must lie after the first. Equal positions are
     /// refused: one site is written without a last site, through
     /// `ProteinRange::from(site)`.
-    pub fn new(start: ProteinSite, end: ProteinSite) -> Result<Self, ProteinRangeError> {
+    pub fn new(
+        start: ProteinSite,
+        end: ProteinSite,
+    ) -> std::result::Result<Self, ProteinRangeError> {
         if end.position <= start.position {
             return Err(ProteinRangeError);
         }
