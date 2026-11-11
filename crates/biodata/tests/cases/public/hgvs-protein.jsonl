@@ -45,7 +45,7 @@
 {"input": "p.Ala2_Gly3Ser", "outcome": "invalid", "code": "hgvs.protein_edit.invalid", "span": [11, 12]}
 {"input": "p.Ala2_=", "outcome": "invalid", "code": "hgvs.protein_residue.invalid", "span": [7, 8]}
 {"input": "p.Ala2_Gly=", "outcome": "invalid", "code": "hgvs.protein_position.invalid", "span": [10, 11]}
-{"input": "p.(Ala2_Gly3=", "outcome": "invalid", "code": "hgvs.protein_edit.invalid", "span": [13, 13]}
+{"input": "p.(Ala2_Gly3=", "outcome": "invalid", "code": "hgvs.molecule.invalid", "span": [13, 13]}
 {"input":"p.A41G","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Ala","position":41},"to":"Gly"}}}},"render":"p.Ala41Gly"}
 {"input":"p.Ala41Gly","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Ala","position":41},"to":"Gly"}}}}}
 {"input":"p.R41A","outcome":"parsed","value":{"change":{"protein":{"substitution":{"site":{"residue":"Arg","position":41},"to":"Ala"}}}},"render":"p.Arg41Ala"}

@@ -35,7 +35,7 @@ sha256 = "951cb126355c1cd4947ee517ae02dfdfa90bfcc85a6e2f52a6de1907cc5530b1"
 
 [[file]]
 path = "hgvs-protein.jsonl"
-sha256 = "ee650587d4ffc6f27a11d196461f4efa2a2cef99be9b22df139d62f08ecec26f"
+sha256 = "0681f737a66d8e59dfcd8207a86390938a5deda83c79c8fe919767f5f25b46f7"
 
 [[file]]
 path = "hgvs-reference.jsonl"
