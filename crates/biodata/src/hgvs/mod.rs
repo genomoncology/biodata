@@ -9,7 +9,9 @@ pub use nucleotide::{
     Whole,
 };
 pub use nucleotide_value::{Nucleotide, Nucleotides, RnaBase};
-pub use protein::{Distance, Extension, ProteinChange, ProteinCode, ProteinRange, ProteinSite};
+pub use protein::{
+    Distance, Extension, ProteinChange, ProteinCode, ProteinRange, ProteinRangeError, ProteinSite,
+};
 
 use crate::outcome::{Code, Parsed};
 use crate::parse::{Expect, Input, Result, run, step};

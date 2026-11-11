@@ -54,8 +54,15 @@ pub enum ProteinChange {
     },
     /// A longer protein at either end.
     Extension(Extension),
-    /// No change, either at a site or across the protein.
-    Same(Option<ProteinSite>),
+    /// No change at a site, over a range, or across the protein.
+    ///
+    /// HGVS writes `p.Ala2=`, `p.Ala2_Gly3=` and `p.=`. A one-site
+    /// location serializes as the site itself, as it always has; a range
+    /// serializes with `start` and `end`, as a deletion's range does.
+    Same(
+        #[cfg_attr(feature = "serde", serde(serialize_with = "same_location"))]
+        Option<ProteinRange>,
+    ),
     /// An unknown change, either at a site or across the protein.
     Unknown(Option<ProteinSite>),
     /// No protein product.
@@ -71,6 +78,9 @@ pub struct ProteinSite {
     pub position: Position1,
 }
 /// One site or an inclusive range.
+///
+/// A written last site lies after the first. [`ProteinRange::new`] checks
+/// that order, and the parser refuses text that breaks it.
 #[derive(Clone, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize))]
 pub struct ProteinRange {
@@ -79,6 +89,62 @@ pub struct ProteinRange {
     /// The last site, when written.
     #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
     pub end: Option<ProteinSite>,
+}
+impl ProteinRange {
+    /// Build a range from its first and last sites.
+    ///
+    /// The last position must lie after the first. Equal positions are
+    /// refused: one site is written without a last site, through
+    /// `ProteinRange::from(site)`.
+    pub fn new(
+        start: ProteinSite,
+        end: ProteinSite,
+    ) -> std::result::Result<Self, ProteinRangeError> {
+        if end.position <= start.position {
+            return Err(ProteinRangeError);
+        }
+        Ok(Self {
+            start,
+            end: Some(end),
+        })
+    }
+}
+impl From<ProteinSite> for ProteinRange {
+    fn from(start: ProteinSite) -> Self {
+        Self { start, end: None }
+    }
+}
+/// A protein range's last position does not lie after its first.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct ProteinRangeError;
+impl ProteinRangeError {
+    /// Stable refusal code.
+    pub const fn code(self) -> &'static str {
+        "hgvs.protein_range.order"
+    }
+}
+impl fmt::Display for ProteinRangeError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.write_str(self.code())
+    }
+}
+impl std::error::Error for ProteinRangeError {}
+/// Serialize an identity's location: a one-site range as the bare site,
+/// which keeps the bytes of `p.Ala2=`, and a longer range in full.
+#[cfg(feature = "serde")]
+#[expect(
+    clippy::ref_option,
+    reason = "serde passes the variant field by reference"
+)]
+fn same_location<S: serde::Serializer>(
+    location: &Option<ProteinRange>,
+    serializer: S,
+) -> std::result::Result<S::Ok, S::Error> {
+    match location {
+        None => serializer.serialize_none(),
+        Some(ProteinRange { start, end: None }) => serializer.serialize_some(start),
+        Some(range) => serializer.serialize_some(range),
+    }
 }
 /// An extension at the start or stop.
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -138,8 +204,6 @@ pub enum ProteinCode {
     AlleleUnsupported => "hgvs.protein_allele.unsupported",
     /// Repeated residues are not represented yet.
     RepeatUnsupported => "hgvs.protein_repeat.unsupported",
-    /// Equality over a range has no value in this representation.
-    RangeEqualityUnsupported => "hgvs.protein_range_equality.unsupported",
     /// An insertion specified by count is not represented yet.
     InsertedCountUnsupported => "hgvs.protein_inserted_count.unsupported",
 }
@@ -275,17 +339,13 @@ fn edit(input: &mut Input<'_>) -> Result<ProteinChange> {
     }
     let start = site(input)?;
     let end = opt(('_', cut_err(site)).map(|(_, site)| site)).parse_next(input)?;
-    let range = ProteinRange { start, end };
-    if range
-        .end
-        .as_ref()
-        .is_some_and(|end| end.position <= range.start.position)
-    {
-        return reject(input, Some(EDIT));
-    }
-    if range.end.is_some() && input.starts_with('=') {
-        return refuse(Code::Protein(ProteinCode::RangeEqualityUnsupported), '=').parse_next(input);
-    }
+    let range = match end {
+        None => ProteinRange::from(start),
+        Some(end) => match ProteinRange::new(start, end) {
+            Ok(range) => range,
+            Err(ProteinRangeError) => return reject(input, Some(EDIT)),
+        },
+    };
     let repeat = refuse(Code::Protein(ProteinCode::RepeatUnsupported), '[');
     let marker = alt((
         repeat,
@@ -297,14 +357,7 @@ fn edit(input: &mut Input<'_>) -> Result<ProteinChange> {
         "?".value(Marker::Unknown),
     ));
     if let Some(marker) = opt(marker).parse_next(input)? {
-        if matches!(
-            marker,
-            Marker::Deletion | Marker::Duplication | Marker::Insertion | Marker::Delins
-        ) && (range.start.residue == Residue::Ter
-            || range.end.as_ref().is_some_and(|end| {
-                end.residue == Residue::Ter && !matches!(marker, Marker::Insertion)
-            }))
-        {
+        if stop_misplaced(marker, &range) {
             return reject(input, Some(EDIT));
         }
         return Ok(match marker {
@@ -325,15 +378,12 @@ fn edit(input: &mut Input<'_>) -> Result<ProteinChange> {
                     inserted: sequence(input)?,
                 }
             }
-            Marker::Same | Marker::Unknown => {
+            Marker::Same => ProteinChange::Same(Some(range)),
+            Marker::Unknown => {
                 if range.end.is_some() {
                     return reject(input, Some(EDIT));
                 }
-                if matches!(marker, Marker::Same) {
-                    ProteinChange::Same(Some(range.start))
-                } else {
-                    ProteinChange::Unknown(Some(range.start))
-                }
+                ProteinChange::Unknown(Some(range.start))
             }
         });
     }
@@ -384,6 +434,26 @@ fn edit(input: &mut Input<'_>) -> Result<ProteinChange> {
         return reject(input, Some(EDIT));
     }
     Ok(ProteinChange::Substitution { site, to })
+}
+
+/// Whether a stop sits where the edit cannot use it. Deletions,
+/// duplications, deletion-insertions, insertions and range identities
+/// refuse a range starting at a stop. Only deletions, duplications and
+/// deletion-insertions also refuse one ending at a stop. A one-site
+/// identity or unknown change may name a stop.
+fn stop_misplaced(marker: Marker, range: &ProteinRange) -> bool {
+    let (start, end) = match marker {
+        Marker::Deletion | Marker::Duplication | Marker::Delins => (true, true),
+        Marker::Insertion => (true, false),
+        Marker::Same => (range.end.is_some(), false),
+        Marker::Unknown => (false, false),
+    };
+    (start && range.start.residue == Residue::Ter)
+        || (end
+            && range
+                .end
+                .as_ref()
+                .is_some_and(|end| end.residue == Residue::Ter))
 }
 
 fn required<T>(value: Option<T>, input: &mut Input<'_>) -> Result<T> {
@@ -481,15 +551,17 @@ impl fmt::Display for ProteinChange {
                     write!(f, "{stop}")
                 }
             },
-            Self::Same(site) | Self::Unknown(site) => {
+            Self::Same(range) => {
+                if let Some(range) = range {
+                    fmt::Display::fmt(range, f)?;
+                }
+                f.write_str("=")
+            }
+            Self::Unknown(site) => {
                 if let Some(site) = site {
                     fmt::Display::fmt(site, f)?;
                 }
-                f.write_str(if matches!(self, Self::Same(_)) {
-                    "="
-                } else {
-                    "?"
-                })
+                f.write_str("?")
             }
             Self::NoProtein => f.write_str("0"),
         }

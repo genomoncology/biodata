@@ -41,6 +41,7 @@ The second consumer's hot-path values are the base. The target is no change. The
 | `AlleleKey` in `src/coordinate.rs` | None. `CoordinateError` already has `code()`. | None. |
 | `Span` in `src/outcome.rs` | None. | None. |
 | The HGVS parser in `src/hgvs/` | None. Two of its functions exceed BioMCP's line limit and get named lint exceptions instead of a split (see Lints below). | None. |
+| `ProteinChange` in `src/hgvs/protein.rs` | Ticket 0024: `Same` holds `Option<ProteinRange>` instead of `Option<ProteinSite>`, so a protein identity can cover a range. | None measured. Sizes and alignments of `ProteinSite`, `ProteinRange`, `ProteinChange`, `hgvs::Change`, `Hgvs`, `alteration::Change` and `Alteration` stay 8/4, 16/4, 48/8, 96/8, 144/8, 144/8 and 168/8 bytes on 64-bit targets, pinned by `tests/hgvs_layout.rs`. Every input that parsed before parses the same way and serializes to the same bytes in every serde format; the parser drops one early refusal check. Code that builds or matches `Same(Some(site))` adapts to `Same(Some(site.into()))` and reads `range.start`. |
 
 ## Known conflicts
 
@@ -161,6 +162,8 @@ BioData's own types hold BioMCP's limits. These narrow what the second consumer'
 | `HgvsText` in `src/source_text.rs` | Refuses spaces, nonnumeric bodies outside the explicit positionless forms, and nonprotein bodies on protein references. |
 | `Expression` in `src/variant/notation.rs` | Applies the same body check to chromosome expressions. |
 | `VcvId`, `RcvId` and `ScvId` in `src/identifier.rs` | Refuse ten-digit numbers. |
+
+One later change widens the second consumer's parsing instead. Ticket 0024 makes a protein identity over a range, such as `p.Ala2_Gly3=`, parse through `hgvs::parse` and `alteration::parse` as a `ProteinChange::Same` value, where both parsers refused it with `hgvs.protein_range_equality.unsupported`. That code is removed because nothing raises it. A range identity that starts at a stop is refused with `hgvs.protein_edit.invalid`, as a deletion's range is.
 
 ## Other compatibility effects at extraction
 
@@ -767,6 +770,7 @@ The PM's 2026-11-01 ruling adds caller-safe macro implementations and compile-ti
 | `__biodata_native_schema` in `src/macros.rs` | Hidden helper selected by BioData features for exported macro callers. |
 | `TextLiteral` in `src/text_literal.rs` | A checked static input token; its const constructor returns the same errors as Text's runtime constructor. Conversion to Text trims and allocates without a runtime refusal. |
 | `text` in `src/text_literal.rs` | `text!(literal)` forces validation during const evaluation; invalid literals cannot compile. |
+| `ProteinRangeError` in `src/hgvs/protein.rs` | Ticket 0024: `ProteinRange::new(first, last)` refuses a last position that does not lie after the first, with code `hgvs.protein_range.order`. One site is written through `ProteinRange::from(site)`. The HGVS parser checks range order through this constructor and still reports a disordered range as `hgvs.protein_edit.invalid`, so this code never reaches a parse result. The error type has no schema and is never serialized. |
 
 ## Approved author namespace removal
 
