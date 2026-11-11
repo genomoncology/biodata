@@ -339,14 +339,13 @@ fn edit(input: &mut Input<'_>) -> Result<ProteinChange> {
     }
     let start = site(input)?;
     let end = opt(('_', cut_err(site)).map(|(_, site)| site)).parse_next(input)?;
-    let range = ProteinRange { start, end };
-    if range
-        .end
-        .as_ref()
-        .is_some_and(|end| end.position <= range.start.position)
-    {
-        return reject(input, Some(EDIT));
-    }
+    let range = match end {
+        None => ProteinRange::from(start),
+        Some(end) => match ProteinRange::new(start, end) {
+            Ok(range) => range,
+            Err(ProteinRangeError) => return reject(input, Some(EDIT)),
+        },
+    };
     let repeat = refuse(Code::Protein(ProteinCode::RepeatUnsupported), '[');
     let marker = alt((
         repeat,
@@ -358,14 +357,7 @@ fn edit(input: &mut Input<'_>) -> Result<ProteinChange> {
         "?".value(Marker::Unknown),
     ));
     if let Some(marker) = opt(marker).parse_next(input)? {
-        if matches!(
-            marker,
-            Marker::Deletion | Marker::Duplication | Marker::Insertion | Marker::Delins
-        ) && (range.start.residue == Residue::Ter
-            || range.end.as_ref().is_some_and(|end| {
-                end.residue == Residue::Ter && !matches!(marker, Marker::Insertion)
-            }))
-        {
+        if stop_misplaced(marker, &range) {
             return reject(input, Some(EDIT));
         }
         return Ok(match marker {
@@ -442,6 +434,26 @@ fn edit(input: &mut Input<'_>) -> Result<ProteinChange> {
         return reject(input, Some(EDIT));
     }
     Ok(ProteinChange::Substitution { site, to })
+}
+
+/// Whether a stop sits where the edit cannot use it. Deletions,
+/// duplications, deletion-insertions, insertions and range identities
+/// refuse a range starting at a stop. Only deletions, duplications and
+/// deletion-insertions also refuse one ending at a stop. A one-site
+/// identity or unknown change may name a stop.
+fn stop_misplaced(marker: Marker, range: &ProteinRange) -> bool {
+    let (start, end) = match marker {
+        Marker::Deletion | Marker::Duplication | Marker::Delins => (true, true),
+        Marker::Insertion => (true, false),
+        Marker::Same => (range.end.is_some(), false),
+        Marker::Unknown => (false, false),
+    };
+    (start && range.start.residue == Residue::Ter)
+        || (end
+            && range
+                .end
+                .as_ref()
+                .is_some_and(|end| end.residue == Residue::Ter))
 }
 
 fn required<T>(value: Option<T>, input: &mut Input<'_>) -> Result<T> {

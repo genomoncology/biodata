@@ -162,7 +162,8 @@ BioData's own types hold BioMCP's limits. These narrow what the second consumer'
 | `HgvsText` in `src/source_text.rs` | Refuses spaces, nonnumeric bodies outside the explicit positionless forms, and nonprotein bodies on protein references. |
 | `Expression` in `src/variant/notation.rs` | Applies the same body check to chromosome expressions. |
 | `VcvId`, `RcvId` and `ScvId` in `src/identifier.rs` | Refuse ten-digit numbers. |
-| `ProteinChange` in `src/hgvs/protein.rs` | Ticket 0024 widens rather than narrows: a protein identity over a range, such as `p.Ala2_Gly3=`, parses through `hgvs::parse` and `alteration::parse` instead of refusing with `hgvs.protein_range_equality.unsupported`. That code is removed because nothing raises it. |
+
+One later change widens the second consumer's parsing instead. Ticket 0024 makes a protein identity over a range, such as `p.Ala2_Gly3=`, parse through `hgvs::parse` and `alteration::parse` as a `ProteinChange::Same` value, where both parsers refused it with `hgvs.protein_range_equality.unsupported`. That code is removed because nothing raises it. A range identity that starts at a stop is refused with `hgvs.protein_edit.invalid`, as a deletion's range is.
 
 ## Other compatibility effects at extraction
 
@@ -769,7 +770,7 @@ The PM's 2026-11-01 ruling adds caller-safe macro implementations and compile-ti
 | `__biodata_native_schema` in `src/macros.rs` | Hidden helper selected by BioData features for exported macro callers. |
 | `TextLiteral` in `src/text_literal.rs` | A checked static input token; its const constructor returns the same errors as Text's runtime constructor. Conversion to Text trims and allocates without a runtime refusal. |
 | `text` in `src/text_literal.rs` | `text!(literal)` forces validation during const evaluation; invalid literals cannot compile. |
-| `ProteinRangeError` in `src/hgvs/protein.rs` | Ticket 0024: `ProteinRange::new(first, last)` refuses a last position that does not lie after the first, with code `hgvs.protein_range.order`. One site is written through `ProteinRange::from(site)`. No schema, wire or parser change. |
+| `ProteinRangeError` in `src/hgvs/protein.rs` | Ticket 0024: `ProteinRange::new(first, last)` refuses a last position that does not lie after the first, with code `hgvs.protein_range.order`. One site is written through `ProteinRange::from(site)`. The HGVS parser checks range order through this constructor and still reports a disordered range as `hgvs.protein_edit.invalid`, so this code never reaches a parse result. The error type has no schema and is never serialized. |
 
 ## Approved author namespace removal
 

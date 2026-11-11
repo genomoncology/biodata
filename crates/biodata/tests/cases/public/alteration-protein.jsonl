@@ -15,7 +15,7 @@
 {"input": "ABL1 A7del", "outcome": "parsed"}
 {"input": "ABL1 ?", "outcome": "parsed"}
 {"input": "ABL1 =", "outcome": "parsed"}
-{"input": "ABL1 A7_G8=", "outcome": "parsed"}
+{"input": "ABL1 A7_G8=", "outcome": "parsed", "value": {"kind": {"gene": {"subject": "ABL1", "change": {"protein": {"protein": {"same": {"start": {"residue": "Ala", "position": 7}, "end": {"residue": "Gly", "position": 8}}}}}}}}}
 {"input": "ABL1 p.Ala7_Gly8=", "outcome": "parsed", "render": "ABL1 A7_G8="}
 {"input": "ABL1 0", "outcome": "parsed"}
 {"input": "ABL1 A7_A8delinsG*", "outcome": "parsed"}

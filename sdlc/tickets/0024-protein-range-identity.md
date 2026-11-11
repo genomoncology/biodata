@@ -6,7 +6,7 @@ Milestone: 1
 
 ## Outcome
 
-A protein identity over a range is a value. `hgvs::parse` accepts `p.Ala2_Gly3=`, the predicted `p.(Ala2_Gly3=)`, and the one-letter `p.A2_G3=`, and formats each back to the standard's three-letter text, which parses to the same value. `ProteinChange::Same` holds `Option<ProteinRange>`, the location type deletions and duplications already use, so one variant says "no change" at a site, over a range, or across the protein. `ProteinRange::new(first, last)` builds a range and refuses a last position that does not lie after the first with `ProteinRangeError` (code `hgvs.protein_range.order`). Equal positions are refused, not folded: one site is written `ProteinRange::from(site)`, as the parser requires `p.Ala2=` rather than `p.Ala2_Ala2=`. The refusal code `hgvs.protein_range_equality.unsupported` is removed, because nothing raises it.
+A protein identity over a range is a value. `hgvs::parse` accepts `p.Ala2_Gly3=`, the predicted `p.(Ala2_Gly3=)`, and the one-letter `p.A2_G3=`, and formats each back to the standard's three-letter text, which parses to the same value. `ProteinChange::Same` holds `Option<ProteinRange>`, the location type deletions and duplications already use, so one variant says "no change" at a site, over a range, or across the protein. `ProteinRange::new(first, last)` builds a range and refuses a last position that does not lie after the first with `ProteinRangeError` (code `hgvs.protein_range.order`). The parser checks range order through `ProteinRange::new`, and one shared rule refuses a stop at the start of a range for deletions, duplications, deletion-insertions, insertions and range identities. Equal positions are refused, not folded: one site is written `ProteinRange::from(site)`, as the parser requires `p.Ala2=` rather than `p.Ala2_Ala2=`. The refusal code `hgvs.protein_range_equality.unsupported` is removed, because nothing raises it.
 
 ## Why
 
@@ -14,7 +14,7 @@ The HGVS recommendations define `=` as "a sequence was tested but found unchange
 
 ## Proof
 
-- Proof: `crates/biodata/tests/cases/public/hgvs-protein.jsonl` replaces the pinned refusal of `p.Ala2_Gly3=` with parsed rows that state the serialized value and the round trip, and keeps near-miss refusals: reversed `p.Gly3_Ala2=`, equal `p.Ala2_Ala2=`, a trailing edit `p.Ala2_Gly3=Ser` or `p.Ala2_Gly3Ser`, and malformed `p.Ala2_=`, `p.Ala2_Gly=` and `p.(Ala2_Gly3=`. `alteration-protein.jsonl` adds `ABL1 A7_G8=`. `tests/protein_identity.rs` checks the constructor, its refusals, and that a constructed identity formats to the standard text and parses back equal. The parsed rows fail on the 1.0.0 tag. One `pm job` runs `make gate` and passes.
+- Proof: `crates/biodata/tests/cases/public/hgvs-protein.jsonl` replaces the pinned refusal of `p.Ala2_Gly3=` with parsed rows that state the serialized value and the round trip, and keeps near-miss refusals: reversed `p.Gly3_Ala2=`, equal `p.Ala2_Ala2=`, a trailing edit `p.Ala2_Gly3=Ser` or `p.Ala2_Gly3Ser`, malformed `p.Ala2_=`, `p.Ala2_Gly=` and `p.(Ala2_Gly3=`, and a range identity starting at a stop, `p.Ter110_Gly112=`, which a deletion's range also refuses. A range ending at a stop (`p.Leu109_Ter110=`) and `Xaa` at either end of a range parse, for identity as for deletion and duplication. `alteration-protein.jsonl` adds `ABL1 A7_G8=`. `tests/protein_identity.rs` checks the constructor, its refusals, and that a constructed identity formats to the standard text and parses back equal. The parsed rows fail on the 1.0.0 tag. One `pm job` runs `make gate` and passes.
 
 ## Starts from
 
@@ -28,6 +28,10 @@ The HGVS recommendations define `=` as "a sequence was tested but found unchange
 ## Defers
 
 - Defers: making `ProteinRange`'s fields private. They are public today and deletions, duplications and deletion-insertions build them directly, so a hand-built range can still break the order the parser and `ProteinRange::new` enforce. Closing that changes every protein edit's construction and belongs in its own ticket.
+
+## Release note
+
+- Release note: for whoever cuts the next registry release, this branch changes the public interface since tag v1.0.0 (`ProteinChange::Same` holds an `Option<ProteinRange>` location instead of an `Option<ProteinSite>`, and `ProteinCode::RangeEqualityUnsupported` is gone), while `Cargo.toml` still says version 1.0.0. Choose the next version for that break; this ticket does not change it.
 
 ## Changes
 
